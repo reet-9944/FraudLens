@@ -646,12 +646,18 @@ if page == "🏠 Home / Overview":
     padding: 2rem 10% 6rem 10%;
 }}
 .newsletter-card {{
-    background: linear-gradient(135deg, #2b1154, #54198c);
+    background: #311b5e;
     border-radius: 20px;
     padding: 5rem 10%;
     display: flex;
     flex-direction: column;
     color: white;
+    position: relative;
+    overflow: hidden;
+}}
+.newsletter-content-wrapper {{
+    position: relative;
+    z-index: 1;
 }}
 .newsletter-title {{
     font-size: 2.5rem;
@@ -971,11 +977,16 @@ if page == "🏠 Home / Overview":
     
     <div class="newsletter-section">
         <div class="newsletter-card">
-            <h2 class="newsletter-title">Keep In Touch and Stay Secure Everyday</h2>
-            <p class="newsletter-desc">Subscribe to our threat intelligence feed for the latest vulnerabilities and accelerated analytics news.</p>
-            <div class="newsletter-input-group">
-                <input type="text" class="newsletter-input" placeholder="Enter Your Email">
-                <button class="newsletter-btn">Subscribe</button>
+            <div class="bg-ring ring-1"></div>
+            <div class="bg-ring ring-2"></div>
+            <div class="bg-ring ring-3"></div>
+            <div class="newsletter-content-wrapper">
+                <h2 class="newsletter-title">Keep In Touch and Stay Secure Everyday</h2>
+                <p class="newsletter-desc">Subscribe to our threat intelligence feed for the latest vulnerabilities and accelerated analytics news.</p>
+                <div class="newsletter-input-group">
+                    <input type="text" class="newsletter-input" placeholder="Enter Your Email">
+                    <button class="newsletter-btn">Subscribe</button>
+                </div>
             </div>
         </div>
     </div>
