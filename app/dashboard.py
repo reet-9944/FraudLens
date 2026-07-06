@@ -802,10 +802,39 @@ if page == "🏠 Home / Overview":
 
 /* Browse sections */
 .browse-section {{
-    background-color: #e6d5c3;
+    background-color: #f8f9fa;
     padding: 8rem 10%;
     color: #2b1154;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}}
+.browse-header, .browse-grid, .browse-btn {{
+    position: relative;
+    z-index: 1;
+}}
+.light-blob {{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.8;
+    z-index: 0;
+}}
+.light-blob-1 {{
+    width: 600px;
+    height: 600px;
+    background: #e0c3fc;
+    top: -200px;
+    left: -200px;
+    animation: morphBlob 14s infinite alternate, floatObj 12s infinite alternate;
+}}
+.light-blob-2 {{
+    width: 500px;
+    height: 500px;
+    background: #8ec5fc;
+    bottom: -150px;
+    right: -100px;
+    animation: morphBlob 12s infinite alternate-reverse, floatObj 15s infinite alternate-reverse;
 }}
 .browse-header {{
     display: flex;
@@ -995,6 +1024,8 @@ if page == "🏠 Home / Overview":
     </div>
     
     <div class="browse-section">
+        <div class="light-blob light-blob-1"></div>
+        <div class="light-blob light-blob-2"></div>
         <div class="browse-header">
             <h2 class="browse-title">Browse according to sections</h2>
             <div class="hiw-line"></div>
