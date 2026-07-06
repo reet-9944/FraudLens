@@ -544,48 +544,48 @@ if page == "🏠 Home / Overview":
 }}
 
 /* How it works section */
-.how-it-works-section {
+.how-it-works-section {{
     background-color: #4b367c;
     padding: 8rem 10%;
     color: white;
-}
-.hiw-header {
+}}
+.hiw-header {{
     margin-bottom: 4rem;
-}
-.hiw-title {
+}}
+.hiw-title {{
     font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 15px;
-}
-.hiw-line {
+}}
+.hiw-line {{
     width: 60px;
     height: 4px;
     background-color: #ffc933;
     border-radius: 2px;
-}
-.hiw-step {
+}}
+.hiw-step {{
     display: flex;
     align-items: center;
     gap: 4rem;
     margin-bottom: 5rem;
-}
-.hiw-step.reverse {
+}}
+.hiw-step.reverse {{
     flex-direction: row-reverse;
-}
-.hiw-img-container {
+}}
+.hiw-img-container {{
     flex: 1;
     display: flex;
-}
-.hiw-img {
+}}
+.hiw-img {{
     width: 80%;
     max-width: 450px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-.hiw-content {
+}}
+.hiw-content {{
     flex: 1;
-}
-.hiw-badge {
+}}
+.hiw-badge {{
     background-color: #ff4070;
     width: 32px;
     height: 32px;
@@ -596,48 +596,48 @@ if page == "🏠 Home / Overview":
     font-size: 0.9rem;
     margin-bottom: 1rem;
     border-radius: 4px;
-}
-.hiw-step-title {
+}}
+.hiw-step-title {{
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-}
-.hiw-step-desc {
+}}
+.hiw-step-desc {{
     color: #c9b4e8;
     line-height: 1.6;
     max-width: 400px;
-}
+}}
 
 /* Browse sections */
-.browse-section {
+.browse-section {{
     background-color: #f04e76;
     padding: 8rem 10%;
     color: white;
     text-align: center;
-}
-.browse-header {
+}}
+.browse-header {{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 4rem;
-}
-.browse-title {
+}}
+.browse-title {{
     font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 15px;
-}
-.browse-grid {
+}}
+.browse-grid {{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
     margin-bottom: 3rem;
-}
-.browse-card {
+}}
+.browse-card {{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.browse-img {
+}}
+.browse-img {{
     width: 100%;
     height: 300px;
     object-fit: cover;
@@ -645,12 +645,12 @@ if page == "🏠 Home / Overview":
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     margin-bottom: 1.5rem;
     background: white; 
-}
-.browse-label {
+}}
+.browse-label {{
     font-weight: 700;
     font-size: 1.2rem;
-}
-.browse-btn {
+}}
+.browse-btn {{
     background-color: #4b367c;
     color: white;
     border: none;
@@ -661,10 +661,10 @@ if page == "🏠 Home / Overview":
     font-size: 1rem;
     margin-top: 2rem;
     transition: transform 0.3s;
-}
-.browse-btn:hover {
+}}
+.browse-btn:hover {{
     transform: translateY(-3px);
-}
+}}
 
 /* Main Footer */
 .main-footer {{
