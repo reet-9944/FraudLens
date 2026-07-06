@@ -44,6 +44,7 @@ def resolve_path(rel_path):
             
     return os.path.abspath(rel_path)
 
+@st.cache_data
 def get_base64_of_bin_file(bin_file):
     try:
         with open(bin_file, 'rb') as f:
@@ -992,19 +993,26 @@ if page == "🏠 Home / Overview":
 
 /* Main Footer */
 .main-footer {{
-    background: #ffffff;
+    background: linear-gradient(-45deg, #fdfbfb, #ebedee, #f3e7e9, #e3eeff);
+    background-size: 400% 400%;
+    animation: soothingGradient 15s ease infinite;
     padding: 4rem 10%;
     display: flex;
     justify-content: space-between;
-    color: #333;
-    border-top: 1px solid #eee;
+    color: #2b1154;
+    border-top: 1px solid rgba(0,0,0,0.03);
+}}
+@keyframes soothingGradient {{
+    0% {{ background-position: 0% 50%; }}
+    50% {{ background-position: 100% 50%; }}
+    100% {{ background-position: 0% 50%; }}
 }}
 .footer-col h4 {{
     margin-bottom: 1.5rem;
     font-weight: 700;
 }}
 .footer-col p {{
-    color: #666;
+    color: #555;
     margin-bottom: 0.8rem;
     font-size: 0.9rem;
 }}
