@@ -330,6 +330,10 @@ if page == "🏠 Home / Overview":
     img_f2 = get_base64_of_bin_file("app/assets/feature_ai.png")
     img_f3 = get_base64_of_bin_file("app/assets/feature_cloud.png")
     
+    icon_nvidia = get_base64_of_bin_file("app/assets/icon_nvidia.png")
+    icon_gemini = get_base64_of_bin_file("app/assets/icon_gemini.png")
+    icon_gcp = get_base64_of_bin_file("app/assets/icon_gcp.png")
+    
     # We use a massive HTML block to break out of Streamlit's constraints and build a custom layout
     custom_landing_html = f"""
 <style>
@@ -549,16 +553,52 @@ if page == "🏠 Home / Overview":
 /* Features Grid */
 .features-section {{
     padding: 8rem 10%;
-    background: #ffffff;
+    background: linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
     color: #333;
+    position: relative;
+    overflow: hidden;
+}}
+.bg-ring {{
+    position: absolute;
+    border-radius: 50%;
+    border: 15px solid rgba(0,0,0,0.05);
+    z-index: 0;
+}}
+.ring-1 {{
+    width: 350px;
+    height: 350px;
+    top: -50px;
+    left: -100px;
+    border-color: rgba(93, 203, 248, 0.2);
+    animation: floatObj 8s ease-in-out infinite alternate;
+}}
+.ring-2 {{
+    width: 500px;
+    height: 500px;
+    bottom: -150px;
+    right: -150px;
+    border-color: rgba(255, 140, 130, 0.15);
+    animation: floatObj 10s ease-in-out infinite alternate-reverse;
+}}
+.ring-3 {{
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    left: 40%;
+    border-color: rgba(184, 67, 242, 0.15);
+    animation: floatObj 12s ease-in-out infinite alternate;
 }}
 .section-title {{
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
 }}
 .features-grid {{
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
@@ -829,20 +869,23 @@ if page == "🏠 Home / Overview":
     </div>
     
     <div class="features-section">
+        <div class="bg-ring ring-1"></div>
+        <div class="bg-ring ring-2"></div>
+        <div class="bg-ring ring-3"></div>
         <h2 class="section-title">How can we help your Business?</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">🚀</div>
+                <div class="feature-icon"><img src="data:image/png;base64,{icon_nvidia}" style="width: 45px; height: 45px; object-fit: contain;"></div>
                 <h3 class="feature-title">NVIDIA RAPIDS</h3>
                 <p class="feature-desc">Utilizing cudf.pandas to parallelize standard data workloads across CUDA cores without rewriting code.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🧠</div>
+                <div class="feature-icon"><img src="data:image/png;base64,{icon_gemini}" style="width: 45px; height: 45px; object-fit: contain;"></div>
                 <h3 class="feature-title">Gemini Copilot</h3>
                 <p class="feature-desc">Built-in Gemini Enterprise Copilot for natural language interaction and automated auditing.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">☁️</div>
+                <div class="feature-icon"><img src="data:image/png;base64,{icon_gcp}" style="width: 45px; height: 45px; object-fit: contain;"></div>
                 <h3 class="feature-title">Google Cloud</h3>
                 <p class="feature-desc">Natively integrates with Google Cloud Platform (BigQuery, GKE, Dataproc) for robust scale.</p>
             </div>
