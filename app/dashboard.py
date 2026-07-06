@@ -609,6 +609,11 @@ if page == "🏠 Home / Overview":
     max-width: 450px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+}}
+.hiw-img:hover {{
+    transform: translateY(-15px) scale(1.03) rotate(-1deg);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }}
 .hiw-content {{
     flex: 1;
@@ -624,6 +629,7 @@ if page == "🏠 Home / Overview":
     font-size: 0.9rem;
     margin-bottom: 1rem;
     border-radius: 4px;
+    animation: floatObj 4s ease-in-out infinite alternate;
 }}
 .hiw-step-title {{
     font-size: 1.5rem;
