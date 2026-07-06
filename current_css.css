@@ -1,0 +1,170 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+    
+    /* Font overrides */
+    html, body, [class*="css"]  {
+        font-family: 'Outfit', sans-serif;
+    }
+    
+    /* App background - Animated Gradient */
+    .stApp {
+        background: linear-gradient(-45deg, #0b0d12, #1a1f2e, #0f1626, #050811);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        color: #f0f2f6;
+    }
+    
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    /* Neon glow effect for cards */
+    .glass-card {
+        background: rgba(20, 24, 33, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .glass-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px 0 rgba(0, 230, 118, 0.15);
+    }
+    
+    /* Fade In Up Animation for Hero */
+    .fade-in-up {
+        animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .glass-card-border-green {
+        border-left: 5px solid #00E676;
+    }
+    
+    .glass-card-border-red {
+        border-left: 5px solid #FF3D00;
+    }
+    
+    .glass-card-border-orange {
+        border-left: 5px solid #FF9100;
+    }
+
+    /* Metric Layouts */
+    .metric-value {
+        font-size: 34px;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 5px;
+    }
+    .metric-value-green {
+        color: #00E676;
+        text-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
+    }
+    .metric-value-red {
+        color: #FF3D00;
+        text-shadow: 0 0 10px rgba(255, 61, 0, 0.2);
+    }
+    .metric-value-orange {
+        color: #FF9100;
+        text-shadow: 0 0 10px rgba(255, 145, 0, 0.2);
+    }
+    .metric-label {
+        font-size: 13px;
+        color: #8E9AA8;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    /* Live pulse indicator */
+    .live-indicator {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #FF3D00;
+        box-shadow: 0 0 0 0 rgba(255, 61, 0, 0.7);
+        animation: pulse 1.6s infinite;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(255, 61, 0, 0.7);
+        }
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(255, 61, 0, 0);
+        }
+        100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(255, 61, 0, 0);
+        }
+    }
+    
+    /* Code formatting styling */
+    code {
+        color: #FF9100 !important;
+        background-color: rgba(30, 30, 40, 0.5) !important;
+        border-radius: 4px;
+        padding: 2px 6px;
+    }
+    
+
+    /* Premium Sidebar Styling - Glassmorphism */
+    [data-testid="stSidebar"] {
+        background: rgba(15, 18, 30, 0.6) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+    
+
+
+    
+    /* Hide radio circles */
+    .stRadio div[role="radiogroup"] > label > div:first-child {
+        display: none !important;
+    }
+    
+    /* Style the radio label container */
+    .stRadio div[role="radiogroup"] > label {
+        background: transparent;
+        padding: 12px 20px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        color: #8E9AA8;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    /* Hover state */
+    .stRadio div[role="radiogroup"] > label:hover {
+        background: rgba(255,255,255,0.05);
+        color: #ffffff;
+    }
+    
+    /* Style for selected state */
+    .stRadio div[role="radiogroup"] > label:has(input:checked) {
+        background: rgba(116, 50, 255, 0.15) !important;
+        color: #ffffff !important;
+        border-left: 4px solid #7432ff !important;
+        padding-left: 16px !important;
+    }
