@@ -858,6 +858,73 @@ if page == "🏠 Home / Overview":
     flex-direction: column;
     align-items: center;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    cursor: pointer;
+}}
+.extra-card {{
+    display: none;
+}}
+/* Glassmorphism Modal */
+.glass-modal {{
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+}}
+.glass-modal.active {{
+    display: flex;
+    animation: fadeIn 0.3s ease forwards;
+}}
+.glass-modal-content {{
+    background: rgba(43, 17, 84, 0.75);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 24px;
+    padding: 3rem;
+    width: 90%;
+    max-width: 500px;
+    color: white;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    position: relative;
+    text-align: left;
+    transform: translateY(20px);
+    animation: slideUpModal 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}}
+@keyframes slideUpModal {{
+    to {{ transform: translateY(0); }}
+}}
+@keyframes fadeIn {{
+    from {{ opacity: 0; }}
+    to {{ opacity: 1; }}
+}}
+.close-modal-btn {{
+    position: absolute;
+    top: 20px; right: 25px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: rgba(255,255,255,0.6);
+    transition: color 0.2s;
+}}
+.close-modal-btn:hover {{
+    color: white;
+}}
+.modal-title-text {{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #b843f2, #7432ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}}
+.modal-desc-text {{
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e0d4f5;
 }}
 .browse-img-wrapper {{
     width: 100%;
@@ -1045,26 +1112,55 @@ if page == "🏠 Home / Overview":
             <div class="hiw-line"></div>
         </div>
         <div class="browse-grid">
-            <div class="browse-card">
+            <div class="browse-card" onclick="document.getElementById('modal-title').innerText='Cloud Triage'; document.getElementById('modal-desc').innerText='Our Cloud Triage system natively integrates with GCP to intercept and analyze transactions in real-time before they hit your database. Click Start Triage to view live logs.'; document.getElementById('glass-modal').classList.add('active');">
                 <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Cloud Triage</div>
             </div>
-            <div class="browse-card">
+            <div class="browse-card" onclick="document.getElementById('modal-title').innerText='Risk Simulator'; document.getElementById('modal-desc').innerText='Run massive-scale Monte Carlo simulations of potential fraud attacks against your infrastructure using our Risk Simulator engine.'; document.getElementById('glass-modal').classList.add('active');">
                 <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Risk Simulator</div>
             </div>
-            <div class="browse-card">
+            <div class="browse-card" onclick="document.getElementById('modal-title').innerText='GPU Benchmark'; document.getElementById('modal-desc').innerText='See the power of NVIDIA RAPIDS cudf.pandas in action. Our benchmark shows 100x+ speedups on standard Pandas dataframes.'; document.getElementById('glass-modal').classList.add('active');">
                 <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">GPU Benchmark</div>
             </div>
+            
+            <!-- Hidden Extra Cards -->
+            <div class="browse-card extra-card" onclick="document.getElementById('modal-title').innerText='Threat Intelligence'; document.getElementById('modal-desc').innerText='Real-time threat intelligence feeds continuously update your models with the latest known vulnerabilities.'; document.getElementById('glass-modal').classList.add('active');">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_h1}" class="browse-img" onerror="this.style.display='none'">
+                </div>
+                <div class="browse-label">Threat Intelligence</div>
+            </div>
+            <div class="browse-card extra-card" onclick="document.getElementById('modal-title').innerText='Data Ingestion'; document.getElementById('modal-desc').innerText='Seamlessly ingest millions of rows from BigQuery or local CSVs into our accelerated pipeline without breaking a sweat.'; document.getElementById('glass-modal').classList.add('active');">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_h2}" class="browse-img" onerror="this.style.display='none'">
+                </div>
+                <div class="browse-label">Data Ingestion</div>
+            </div>
+            <div class="browse-card extra-card" onclick="document.getElementById('modal-title').innerText='Fraud Network'; document.getElementById('modal-desc').innerText='Visualize complex fraud rings and graph networks using Gemini Copilots natural language exploration.'; document.getElementById('glass-modal').classList.add('active');">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_h3}" class="browse-img" onerror="this.style.display='none'">
+                </div>
+                <div class="browse-label">Fraud Network</div>
+            </div>
         </div>
-        <button class="browse-btn" onclick="window.parent.document.querySelectorAll('.stRadio input')[1].click(); return false;">View All →</button>
+        <button class="browse-btn" onclick="document.querySelectorAll('.extra-card').forEach(c => c.style.display = c.style.display === 'flex' ? 'none' : 'flex'); this.innerHTML = this.innerHTML.includes('All') ? 'Show Less ↑' : 'View All →'; return false;">View All →</button>
+    </div>
+    
+    <!-- Transparent Glassmorphism Modal -->
+    <div id="glass-modal" class="glass-modal" onclick="this.classList.remove('active')">
+        <div class="glass-modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal-btn" onclick="document.getElementById('glass-modal').classList.remove('active')">&times;</span>
+            <h2 id="modal-title" class="modal-title-text">Title</h2>
+            <p id="modal-desc" class="modal-desc-text">Description goes here.</p>
+        </div>
     </div>
     
     <div class="newsletter-section">
