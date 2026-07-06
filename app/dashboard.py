@@ -491,16 +491,16 @@ if page == "🏠 Home / Overview":
     100% {{ transform: translateY(0px); }}
 }}
 .img-floating-1 {{
-    width: 320px;
-    height: 380px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     border-radius: 30px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.4);
     animation: floatImg1 6s ease-in-out infinite;
 }}
 .img-floating-2 {{
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     border-radius: 30px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.5);
