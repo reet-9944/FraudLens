@@ -181,6 +181,43 @@ st.markdown("""
         border-radius: 4px;
         padding: 2px 6px;
     }
+    
+    /* --- Premium Sidebar Styling --- */
+    [data-testid="stSidebar"] {
+        background-color: #232236 !important;
+        border-right: none !important;
+    }
+    
+    /* Hide radio circles */
+    .stRadio div[role="radiogroup"] > label > div:first-child {
+        display: none !important;
+    }
+    
+    /* Style the radio label container */
+    .stRadio div[role="radiogroup"] > label {
+        background: transparent;
+        padding: 12px 20px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        color: #8E9AA8;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    /* Hover state */
+    .stRadio div[role="radiogroup"] > label:hover {
+        background: rgba(255,255,255,0.05);
+        color: #ffffff;
+    }
+    
+    /* Style for selected state */
+    .stRadio div[role="radiogroup"] > label:has(input:checked) {
+        background: rgba(116, 50, 255, 0.15) !important;
+        color: #ffffff !important;
+        border-left: 4px solid #7432ff !important;
+        padding-left: 16px !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -238,9 +275,18 @@ if 'triage_decisions' not in st.session_state:
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
 
-# --- Sidebar ---
-st.sidebar.markdown("<h2 style='text-align: center; color: #FFFFFF;'>🔍 FraudLens</h2>", unsafe_allow_html=True)
-st.sidebar.markdown("<p style='text-align: center; color: #8E9AA8;'>Accelerated Risk Intelligence</p>", unsafe_allow_html=True)
+# --- Premium Sidebar Header ---
+st.sidebar.markdown("""
+<div style="display: flex; align-items: center; margin-bottom: 30px; margin-top: -30px;">
+    <div style="width: 24px; height: 24px; background: linear-gradient(135deg, #ff007a, #7432ff); border-radius: 50%; margin-right: 12px; box-shadow: 2px 2px 10px rgba(116, 50, 255, 0.5);"></div>
+    <h3 style="margin:0; color: white; font-weight: 800; font-size: 1.4rem;">FraudLens</h3>
+</div>
+<div style="text-align: center; margin-bottom: 35px; background: rgba(255,255,255,0.03); padding: 20px; border-radius: 16px;">
+    <img src="https://i.pravatar.cc/150?img=47" style="width: 70px; height: 70px; border-radius: 50%; margin-bottom: 12px; border: 3px solid #7432ff; object-fit: cover;">
+    <h3 style="margin: 0; color: white; font-size: 1.1rem; font-weight: 700;">Saira Karim</h3>
+    <p style="margin: 0; color: #8E9AA8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Risk Analyst</p>
+</div>
+""", unsafe_allow_html=True)
 
 page = st.sidebar.radio("Navigation", [
     "🏠 Home / Overview",
@@ -258,13 +304,17 @@ st.sidebar.subheader("🔑 API Configurations")
 api_key = st.sidebar.text_input("Gemini API Key (Optional)", type="password", help="Enter Google AI Studio/Gemini API key to enable live conversational analysis.")
 
 st.sidebar.markdown("---")
-st.sidebar.markdown("### Accelerated Stack")
+# Premium Sidebar Bottom Card
 st.sidebar.markdown("""
-- **NVIDIA RAPIDS** (`cudf.pandas`)
-- **NVIDIA GPU** (XGBoost Training)
-- **Google Cloud Storage** & **BigQuery**
-- **Managed Spark** (Spark RAPIDS)
-""")
+<div style="background: linear-gradient(135deg, #2a1b4e, #4b367c); border-radius: 16px; padding: 20px; margin-top: 40px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+        <span style="font-size: 1.5rem; margin-right: 10px;">🚀</span>
+        <h4 style="margin:0; color: white; font-weight: 700;">FraudLens Pro</h4>
+    </div>
+    <p style="font-size: 0.8rem; color: #c9b4e8; margin: 0 0 15px 0; line-height: 1.5;">Increase your detection speed with 100x GPU acceleration.</p>
+    <button style="background: white; color: #4b367c; border: none; padding: 10px 15px; border-radius: 8px; width: 100%; font-weight: 800; cursor: pointer; transition: transform 0.2s;">Upgrade Now</button>
+</div>
+""", unsafe_allow_html=True)
 
 # --- Navigation Pages ---
 
