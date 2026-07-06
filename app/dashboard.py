@@ -1250,29 +1250,41 @@ if page == "Home / Overview":
         </div>
         <div class="browse-grid">
             <label for="modal-toggle-1" class="browse-card">
-                <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
+                </div>
                 <div class="browse-label">Cloud Triage</div>
             </label>
             <label for="modal-toggle-2" class="browse-card">
-                <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
+                </div>
                 <div class="browse-label">Risk Simulator</div>
             </label>
             <label for="modal-toggle-3" class="browse-card">
-                <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
+                </div>
                 <div class="browse-label">GPU Benchmark</div>
             </label>
             
             <!-- Hidden Extra Cards -->
             <label for="modal-toggle-4" class="browse-card extra-card">
-                <img src="data:image/png;base64,{img_h1}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_h1}" class="browse-img" onerror="this.style.display='none'">
+                </div>
                 <div class="browse-label">Threat Intelligence</div>
             </label>
             <label for="modal-toggle-5" class="browse-card extra-card">
-                <img src="data:image/png;base64,{img_h2}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_h2}" class="browse-img" onerror="this.style.display='none'">
+                </div>
                 <div class="browse-label">Data Ingestion</div>
             </label>
             <label for="modal-toggle-6" class="browse-card extra-card">
-                <img src="data:image/png;base64,{img_h3}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_h3}" class="browse-img" onerror="this.style.display='none'">
+                </div>
                 <div class="browse-label">Fraud Network</div>
             </label>
         </div>
