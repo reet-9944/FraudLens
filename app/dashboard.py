@@ -859,14 +859,28 @@ if page == "🏠 Home / Overview":
     align-items: center;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }}
-.browse-img {{
+.browse-img-wrapper {{
     width: 100%;
     height: 300px;
-    object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
     margin-bottom: 1.5rem;
-    background: white; 
+    background: #080312; /* Deep dark background to blend with tech images */
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}}
+.browse-img {{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.25); /* Zoom in to eliminate baked-in white borders */
+    transition: transform 0.5s ease;
+}}
+.browse-card:hover .browse-img {{
+    transform: scale(1.35); /* Subtle zoom effect on hover */
 }}
 .browse-label {{
     font-weight: 700;
@@ -1032,15 +1046,21 @@ if page == "🏠 Home / Overview":
         </div>
         <div class="browse-grid">
             <div class="browse-card">
-                <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
+                </div>
                 <div class="browse-label">Cloud Triage</div>
             </div>
             <div class="browse-card">
-                <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
+                </div>
                 <div class="browse-label">Risk Simulator</div>
             </div>
             <div class="browse-card">
-                <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-img-wrapper">
+                    <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
+                </div>
                 <div class="browse-label">GPU Benchmark</div>
             </div>
         </div>
