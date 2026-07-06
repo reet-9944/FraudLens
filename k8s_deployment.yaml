@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fraudlens-container
-          image: gcr.io/<YOUR_PROJECT_ID>/fraudlens:latest
+          image: gcr.io/fraudlens-501610/fraudlens:latest
           ports:
             - containerPort: 8501
           resources:

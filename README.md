@@ -86,8 +86,8 @@ FraudLens is designed to be easily deployed on Google Kubernetes Engine (GKE) wi
 
 ### 1. Build and Push the Docker Container
 ```bash
-docker build -t gcr.io/<YOUR_PROJECT_ID>/fraudlens:latest .
-docker push gcr.io/<YOUR_PROJECT_ID>/fraudlens:latest
+docker build -t gcr.io/fraudlens-501610/fraudlens:latest .
+docker push gcr.io/fraudlens-501610/fraudlens:latest
 ```
 
 ### 2. Provision a GKE Cluster (with NVIDIA L4 GPUs)
