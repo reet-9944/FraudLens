@@ -1024,7 +1024,7 @@ if page == "Home / Overview":
 }}
 
 /* --- RESPONSIVE MOBILE ADJUSTMENTS --- */
-@media (max-width: 900px) {{
+@media (max-width: 900px) {{{
     .hero-section {{
         flex-direction: column;
         padding: 6rem 5% 4rem 5%;
@@ -1080,7 +1080,7 @@ if page == "Home / Overview":
     }}
 }}
 
-@media (max-width: 900px) {
+@media (max-width: 900px) {{
 
     /* --- FORCED MOBILE HERO ADJUSTMENTS --- */
     .hero-section {{
