@@ -1,5 +1,7 @@
 # 🛡️ FraudLens – Accelerated Fraud Detection Intelligence
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://fraudlens-2aayf5pr9cbzxabam44mux.streamlit.app/)
+
 <div align="center">
   <img src="https://via.placeholder.com/800x200/0b0f19/00d4ff?text=FraudLens+-+Accelerated+Data+Intelligence" alt="FraudLens Banner" />
 </div>
@@ -79,6 +81,11 @@ Fire up the Streamlit UI:
 streamlit run app/dashboard.py
 ```
 *Navigate to [http://localhost:8501](http://localhost:8501) in your browser.*
+
+## ☁️ Live Demo (Streamlit Cloud)
+
+The application is currently live and deployed on Streamlit Community Cloud.
+**👉 Access the live application here:** [https://fraudlens-2aayf5pr9cbzxabam44mux.streamlit.app/](https://fraudlens-2aayf5pr9cbzxabam44mux.streamlit.app/)
 
 ## ☁️ Deployment (Google Cloud)
 
