@@ -12,6 +12,12 @@ import base64
 import textwrap
 from datetime import datetime
 
+import sys
+from pathlib import Path
+
+# Add project root to sys.path to resolve module imports on Streamlit Cloud
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 # Set page config
 st.set_page_config(page_title="FraudLens | Accelerated Data Intelligence", layout="wide", page_icon="🔍")
 
