@@ -322,18 +322,18 @@ st.sidebar.markdown("""
 # PAGE 0: HOME / OVERVIEW
 if page == "🏠 Home / Overview":
     # Load base64 images - Fix paths relative to where script is executed (from workspace root)
-    img_h1 = get_base64_of_bin_file("app/assets/hero_collage_1.png")
-    img_h2 = get_base64_of_bin_file("app/assets/hero_collage_2.png")
-    img_h3 = get_base64_of_bin_file("app/assets/hero_collage_3.png")
-    img_h4 = get_base64_of_bin_file("app/assets/feature_ai.png")
+    img_h1 = get_base64_of_bin_file("app/assets/hero_collage_1.webp")
+    img_h2 = get_base64_of_bin_file("app/assets/hero_collage_2.webp")
+    img_h3 = get_base64_of_bin_file("app/assets/hero_collage_3.webp")
+    img_h4 = get_base64_of_bin_file("app/assets/feature_ai.webp")
     
-    img_f1 = get_base64_of_bin_file("app/assets/feature_speed.png")
-    img_f2 = get_base64_of_bin_file("app/assets/feature_ai.png")
-    img_f3 = get_base64_of_bin_file("app/assets/feature_cloud.png")
+    img_f1 = get_base64_of_bin_file("app/assets/feature_speed.webp")
+    img_f2 = get_base64_of_bin_file("app/assets/feature_ai.webp")
+    img_f3 = get_base64_of_bin_file("app/assets/feature_cloud.webp")
     
-    icon_nvidia = get_base64_of_bin_file("app/assets/icon_nvidia.png")
-    icon_gemini = get_base64_of_bin_file("app/assets/icon_gemini.png")
-    icon_gcp = get_base64_of_bin_file("app/assets/icon_gcp.png")
+    icon_nvidia = get_base64_of_bin_file("app/assets/icon_nvidia.webp")
+    icon_gemini = get_base64_of_bin_file("app/assets/icon_gemini.webp")
+    icon_gcp = get_base64_of_bin_file("app/assets/icon_gcp.webp")
     
     # We use a massive HTML block to break out of Streamlit's constraints and build a custom layout
     custom_landing_html = f"""
@@ -1045,8 +1045,8 @@ if page == "🏠 Home / Overview":
         </div>
         
         <div class="hero-images">
-            <div class="img-wrapper-1"><img src="data:image/png;base64,{img_h2}" class="img-floating-1" onerror="this.style.display='none'"></div>
-            <div class="img-wrapper-2"><img src="data:image/png;base64,{img_h4}" class="img-floating-2" onerror="this.style.display='none'"></div>
+            <div class="img-wrapper-1"><img src="data:image/webp;base64,{img_h2}" class="img-floating-1" onerror="this.style.display='none'"></div>
+            <div class="img-wrapper-2"><img src="data:image/webp;base64,{img_h4}" class="img-floating-2" onerror="this.style.display='none'"></div>
         </div>
     </div>
     
@@ -1057,17 +1057,17 @@ if page == "🏠 Home / Overview":
         <h2 class="section-title">How can we help your Business?</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon"><img src="data:image/png;base64,{icon_nvidia}" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="feature-icon"><img src="data:image/webp;base64,{icon_nvidia}" style="width: 100%; height: 100%; object-fit: cover;"></div>
                 <h3 class="feature-title">NVIDIA RAPIDS</h3>
                 <p class="feature-desc">Utilizing cudf.pandas to parallelize standard data workloads across CUDA cores without rewriting code.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><img src="data:image/png;base64,{icon_gemini}" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="feature-icon"><img src="data:image/webp;base64,{icon_gemini}" style="width: 100%; height: 100%; object-fit: cover;"></div>
                 <h3 class="feature-title">Gemini Copilot</h3>
                 <p class="feature-desc">Built-in Gemini Enterprise Copilot for natural language interaction and automated auditing.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><img src="data:image/png;base64,{icon_gcp}" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="feature-icon"><img src="data:image/webp;base64,{icon_gcp}" style="width: 100%; height: 100%; object-fit: cover;"></div>
                 <h3 class="feature-title">Google Cloud</h3>
                 <p class="feature-desc">Natively integrates with Google Cloud Platform (BigQuery, GKE, Dataproc) for robust scale.</p>
             </div>
@@ -1087,7 +1087,7 @@ if page == "🏠 Home / Overview":
         <!-- Step 1 -->
         <div class="hiw-step">
             <div class="hiw-img-container" style="justify-content: flex-start;">
-                <img src="data:image/png;base64,{img_h1}" class="hiw-img" onerror="this.style.display='none'">
+                <img src="data:image/webp;base64,{img_h1}" class="hiw-img" onerror="this.style.display='none'">
             </div>
             <div class="hiw-content">
                 <div class="hiw-badge">01</div>
@@ -1099,7 +1099,7 @@ if page == "🏠 Home / Overview":
         <!-- Step 2 -->
         <div class="hiw-step">
             <div class="hiw-img-container" style="justify-content: center;">
-                <img src="data:image/png;base64,{img_h2}" class="hiw-img" onerror="this.style.display='none'">
+                <img src="data:image/webp;base64,{img_h2}" class="hiw-img" onerror="this.style.display='none'">
             </div>
             <div class="hiw-content">
                 <div class="hiw-badge">02</div>
@@ -1111,7 +1111,7 @@ if page == "🏠 Home / Overview":
         <!-- Step 3 -->
         <div class="hiw-step reverse">
             <div class="hiw-img-container" style="justify-content: center;">
-                <img src="data:image/png;base64,{img_h3}" class="hiw-img" onerror="this.style.display='none'">
+                <img src="data:image/webp;base64,{img_h3}" class="hiw-img" onerror="this.style.display='none'">
             </div>
             <div class="hiw-content" style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
                 <div class="hiw-badge">03</div>
@@ -1123,7 +1123,7 @@ if page == "🏠 Home / Overview":
         <!-- Step 4 -->
         <div class="hiw-step reverse">
             <div class="hiw-img-container" style="justify-content: flex-end;">
-                <img src="data:image/png;base64,{img_f2}" class="hiw-img" onerror="this.style.display='none'">
+                <img src="data:image/webp;base64,{img_f2}" class="hiw-img" onerror="this.style.display='none'">
             </div>
             <div class="hiw-content" style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
                 <div class="hiw-badge">04</div>
@@ -1151,19 +1151,19 @@ if page == "🏠 Home / Overview":
         <div class="browse-grid">
             <label for="modal-toggle-1" class="browse-card">
                 <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
+                    <img src="data:image/webp;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Cloud Triage</div>
             </label>
             <label for="modal-toggle-2" class="browse-card">
                 <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
+                    <img src="data:image/webp;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Risk Simulator</div>
             </label>
             <label for="modal-toggle-3" class="browse-card">
                 <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
+                    <img src="data:image/webp;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">GPU Benchmark</div>
             </label>
@@ -1171,19 +1171,19 @@ if page == "🏠 Home / Overview":
             <!-- Hidden Extra Cards -->
             <label for="modal-toggle-4" class="browse-card extra-card">
                 <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_h1}" class="browse-img" onerror="this.style.display='none'">
+                    <img src="data:image/webp;base64,{img_h1}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Threat Intelligence</div>
             </label>
             <label for="modal-toggle-5" class="browse-card extra-card">
                 <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_h2}" class="browse-img" onerror="this.style.display='none'">
+                    <img src="data:image/webp;base64,{img_h2}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Data Ingestion</div>
             </label>
             <label for="modal-toggle-6" class="browse-card extra-card">
                 <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_h3}" class="browse-img" onerror="this.style.display='none'">
+                    <img src="data:image/webp;base64,{img_h3}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Fraud Network</div>
             </label>
