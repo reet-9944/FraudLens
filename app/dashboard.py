@@ -368,12 +368,22 @@ if page == "🏠 Home / Overview":
     max-width: 650px;
     z-index: 10;
 }}
+@keyframes slideInLeft {{
+    from {{ opacity: 0; transform: translateX(-50px); }}
+    to {{ opacity: 1; transform: translateX(0); }}
+}}
+@keyframes slideInUp {{
+    from {{ opacity: 0; transform: translateY(50px); }}
+    to {{ opacity: 1; transform: translateY(0); }}
+}}
+
 .hero-top-text {{
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.9rem;
     color: #b0b4c0;
     margin-bottom: 1rem;
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }}
 .hero-title {{
     font-size: 4.5rem;
@@ -381,6 +391,8 @@ if page == "🏠 Home / Overview":
     line-height: 1.1;
     color: #ffffff;
     margin-bottom: 1.5rem;
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
+    opacity: 0;
 }}
 .hero-subtitle {{
     font-size: 1.1rem;
@@ -388,11 +400,15 @@ if page == "🏠 Home / Overview":
     margin-bottom: 3rem;
     line-height: 1.6;
     max-width: 500px;
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+    opacity: 0;
 }}
 .hero-buttons {{
     display: flex;
     gap: 1.5rem;
     margin-bottom: 4rem;
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+    opacity: 0;
 }}
 .btn-primary {{
     background: linear-gradient(90deg, #b843f2, #7432ff, #ff007a, #b843f2);
@@ -427,6 +443,8 @@ if page == "🏠 Home / Overview":
     color: #b0b4c0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+    opacity: 0;
 }}
 .powered-logos {{
     display: flex;
@@ -435,6 +453,8 @@ if page == "🏠 Home / Overview":
     align-items: center;
     font-weight: bold;
     color: white;
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+    opacity: 0;
 }}
 
 .hero-images {{
@@ -453,6 +473,8 @@ if page == "🏠 Home / Overview":
     border-radius: 30px;
     top: 0;
     left: 0;
+    animation: slideInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
+    opacity: 0;
 }}
 .img-bottom-left {{
     position: absolute;
@@ -462,6 +484,8 @@ if page == "🏠 Home / Overview":
     border-radius: 30px;
     bottom: 0;
     left: 0;
+    animation: slideInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+    opacity: 0;
 }}
 .img-top-right {{
     position: absolute;
@@ -471,6 +495,8 @@ if page == "🏠 Home / Overview":
     border-radius: 30px;
     top: 0;
     right: 0;
+    animation: slideInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards;
+    opacity: 0;
 }}
 .img-bottom-right {{
     position: absolute;
@@ -480,6 +506,8 @@ if page == "🏠 Home / Overview":
     border-radius: 30px;
     bottom: 0;
     right: 0;
+    animation: slideInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
+    opacity: 0;
 }}
 
 /* Decorative circles with Morphing Blob Animation */
