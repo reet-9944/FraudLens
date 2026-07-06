@@ -307,7 +307,7 @@ page = st.sidebar.radio("Navigation", [
 st.sidebar.markdown("---")
 
 # Optional Gemini API Key
-st.sidebar.subheader("🔑 API Configurations")
+st.sidebar.subheader("API Configurations")
 api_key = st.sidebar.text_input("Gemini API Key (Optional)", type="password", help="Enter Google AI Studio/Gemini API key to enable live conversational analysis.")
 
 st.sidebar.markdown("---")
