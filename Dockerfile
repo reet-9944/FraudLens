@@ -22,10 +22,10 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the source code
-COPY fraudlens/ ./fraudlens/
+COPY . .
 
 # Expose Streamlit's default port
 EXPOSE 8501
 
 # Run Streamlit (bind to all interfaces)
-CMD ["streamlit", "run", "fraudlens/app/dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "app/dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
