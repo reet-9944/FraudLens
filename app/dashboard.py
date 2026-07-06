@@ -875,10 +875,28 @@ if page == "🏠 Home / Overview":
     align-items: center;
     justify-content: center;
 }}
-.glass-modal.active {{
+.modal-toggle {{ display: none; }}
+#modal-toggle-1:checked ~ .modal-1,
+#modal-toggle-2:checked ~ .modal-2,
+#modal-toggle-3:checked ~ .modal-3,
+#modal-toggle-4:checked ~ .modal-4,
+#modal-toggle-5:checked ~ .modal-5,
+#modal-toggle-6:checked ~ .modal-6 {{
     display: flex;
     animation: fadeIn 0.3s ease forwards;
 }}
+.glass-modal-close-bg {{
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    cursor: default;
+}}
+#toggle-cards:checked ~ .browse-grid .extra-card {{
+    display: flex;
+    animation: fadeIn 0.5s ease forwards;
+}}
+.btn-text-less {{ display: none; }}
+#toggle-cards:checked ~ .browse-btn .btn-text-more {{ display: none; }}
+#toggle-cards:checked ~ .browse-btn .btn-text-less {{ display: inline; }}
 .glass-modal-content {{
     background: rgba(43, 17, 84, 0.75);
     backdrop-filter: blur(25px);
@@ -1105,6 +1123,14 @@ if page == "🏠 Home / Overview":
     </div>
     
     <div class="browse-section">
+        <input type="checkbox" id="toggle-cards" style="display: none;">
+        <input type="checkbox" id="modal-toggle-1" class="modal-toggle">
+        <input type="checkbox" id="modal-toggle-2" class="modal-toggle">
+        <input type="checkbox" id="modal-toggle-3" class="modal-toggle">
+        <input type="checkbox" id="modal-toggle-4" class="modal-toggle">
+        <input type="checkbox" id="modal-toggle-5" class="modal-toggle">
+        <input type="checkbox" id="modal-toggle-6" class="modal-toggle">
+        
         <div class="light-blob light-blob-1"></div>
         <div class="light-blob light-blob-2"></div>
         <div class="browse-header">
@@ -1112,54 +1138,99 @@ if page == "🏠 Home / Overview":
             <div class="hiw-line"></div>
         </div>
         <div class="browse-grid">
-            <div class="browse-card" onclick="document.getElementById('modal-title').innerText='Cloud Triage'; document.getElementById('modal-desc').innerText='Our Cloud Triage system natively integrates with GCP to intercept and analyze transactions in real-time before they hit your database. Click Start Triage to view live logs.'; document.getElementById('glass-modal').classList.add('active');">
+            <label for="modal-toggle-1" class="browse-card">
                 <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Cloud Triage</div>
-            </div>
-            <div class="browse-card" onclick="document.getElementById('modal-title').innerText='Risk Simulator'; document.getElementById('modal-desc').innerText='Run massive-scale Monte Carlo simulations of potential fraud attacks against your infrastructure using our Risk Simulator engine.'; document.getElementById('glass-modal').classList.add('active');">
+            </label>
+            <label for="modal-toggle-2" class="browse-card">
                 <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Risk Simulator</div>
-            </div>
-            <div class="browse-card" onclick="document.getElementById('modal-title').innerText='GPU Benchmark'; document.getElementById('modal-desc').innerText='See the power of NVIDIA RAPIDS cudf.pandas in action. Our benchmark shows 100x+ speedups on standard Pandas dataframes.'; document.getElementById('glass-modal').classList.add('active');">
+            </label>
+            <label for="modal-toggle-3" class="browse-card">
                 <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">GPU Benchmark</div>
-            </div>
+            </label>
             
             <!-- Hidden Extra Cards -->
-            <div class="browse-card extra-card" onclick="document.getElementById('modal-title').innerText='Threat Intelligence'; document.getElementById('modal-desc').innerText='Real-time threat intelligence feeds continuously update your models with the latest known vulnerabilities.'; document.getElementById('glass-modal').classList.add('active');">
+            <label for="modal-toggle-4" class="browse-card extra-card">
                 <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_h1}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Threat Intelligence</div>
-            </div>
-            <div class="browse-card extra-card" onclick="document.getElementById('modal-title').innerText='Data Ingestion'; document.getElementById('modal-desc').innerText='Seamlessly ingest millions of rows from BigQuery or local CSVs into our accelerated pipeline without breaking a sweat.'; document.getElementById('glass-modal').classList.add('active');">
+            </label>
+            <label for="modal-toggle-5" class="browse-card extra-card">
                 <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_h2}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Data Ingestion</div>
-            </div>
-            <div class="browse-card extra-card" onclick="document.getElementById('modal-title').innerText='Fraud Network'; document.getElementById('modal-desc').innerText='Visualize complex fraud rings and graph networks using Gemini Copilots natural language exploration.'; document.getElementById('glass-modal').classList.add('active');">
+            </label>
+            <label for="modal-toggle-6" class="browse-card extra-card">
                 <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_h3}" class="browse-img" onerror="this.style.display='none'">
                 </div>
                 <div class="browse-label">Fraud Network</div>
+            </label>
+        </div>
+        
+        <label for="toggle-cards" class="browse-btn" style="display: inline-block;">
+            <span class="btn-text-more">View All &rarr;</span>
+            <span class="btn-text-less">Show Less &uarr;</span>
+        </label>
+        
+        <!-- Transparent Glassmorphism Modals -->
+        <div class="glass-modal modal-1">
+            <label for="modal-toggle-1" class="glass-modal-close-bg"></label>
+            <div class="glass-modal-content">
+                <label for="modal-toggle-1" class="close-modal-btn">&times;</label>
+                <h2 class="modal-title-text">Cloud Triage</h2>
+                <p class="modal-desc-text">Our Cloud Triage system natively integrates with GCP to intercept and analyze transactions in real-time before they hit your database. Click Start Triage to view live logs.</p>
             </div>
         </div>
-        <button class="browse-btn" onclick="document.querySelectorAll('.extra-card').forEach(c => c.style.display = c.style.display === 'flex' ? 'none' : 'flex'); this.innerHTML = this.innerHTML.includes('All') ? 'Show Less ↑' : 'View All →'; return false;">View All →</button>
-    </div>
-    
-    <!-- Transparent Glassmorphism Modal -->
-    <div id="glass-modal" class="glass-modal" onclick="this.classList.remove('active')">
-        <div class="glass-modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal-btn" onclick="document.getElementById('glass-modal').classList.remove('active')">&times;</span>
-            <h2 id="modal-title" class="modal-title-text">Title</h2>
-            <p id="modal-desc" class="modal-desc-text">Description goes here.</p>
+        <div class="glass-modal modal-2">
+            <label for="modal-toggle-2" class="glass-modal-close-bg"></label>
+            <div class="glass-modal-content">
+                <label for="modal-toggle-2" class="close-modal-btn">&times;</label>
+                <h2 class="modal-title-text">Risk Simulator</h2>
+                <p class="modal-desc-text">Run massive-scale Monte Carlo simulations of potential fraud attacks against your infrastructure using our Risk Simulator engine.</p>
+            </div>
+        </div>
+        <div class="glass-modal modal-3">
+            <label for="modal-toggle-3" class="glass-modal-close-bg"></label>
+            <div class="glass-modal-content">
+                <label for="modal-toggle-3" class="close-modal-btn">&times;</label>
+                <h2 class="modal-title-text">GPU Benchmark</h2>
+                <p class="modal-desc-text">See the power of NVIDIA RAPIDS cudf.pandas in action. Our benchmark shows 100x+ speedups on standard Pandas dataframes.</p>
+            </div>
+        </div>
+        <div class="glass-modal modal-4">
+            <label for="modal-toggle-4" class="glass-modal-close-bg"></label>
+            <div class="glass-modal-content">
+                <label for="modal-toggle-4" class="close-modal-btn">&times;</label>
+                <h2 class="modal-title-text">Threat Intelligence</h2>
+                <p class="modal-desc-text">Real-time threat intelligence feeds continuously update your models with the latest known vulnerabilities.</p>
+            </div>
+        </div>
+        <div class="glass-modal modal-5">
+            <label for="modal-toggle-5" class="glass-modal-close-bg"></label>
+            <div class="glass-modal-content">
+                <label for="modal-toggle-5" class="close-modal-btn">&times;</label>
+                <h2 class="modal-title-text">Data Ingestion</h2>
+                <p class="modal-desc-text">Seamlessly ingest millions of rows from BigQuery or local CSVs into our accelerated pipeline without breaking a sweat.</p>
+            </div>
+        </div>
+        <div class="glass-modal modal-6">
+            <label for="modal-toggle-6" class="glass-modal-close-bg"></label>
+            <div class="glass-modal-content">
+                <label for="modal-toggle-6" class="close-modal-btn">&times;</label>
+                <h2 class="modal-title-text">Fraud Network</h2>
+                <p class="modal-desc-text">Visualize complex fraud rings and graph networks using Gemini Copilot's natural language exploration.</p>
+            </div>
         </div>
     </div>
     
