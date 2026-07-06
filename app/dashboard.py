@@ -188,10 +188,10 @@ st.markdown("""
 
     /* Premium Sidebar Styling - Glassmorphism */
     [data-testid="stSidebar"] {
-        background: rgba(15, 18, 30, 0.6) !important;
+        background: var(--secondary-background-color) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-right: 1px solid rgba(128, 128, 128, 0.2) !important;
     }
     
 
@@ -208,7 +208,8 @@ st.markdown("""
         padding: 12px 20px;
         border-radius: 12px;
         margin-bottom: 8px;
-        color: #8E9AA8;
+        color: var(--text-color);
+        opacity: 0.8;
         font-weight: 600;
         transition: all 0.3s ease;
         cursor: pointer;
@@ -216,8 +217,9 @@ st.markdown("""
     
     /* Hover state */
     .stRadio div[role="radiogroup"] > label:hover {
-        background: rgba(255,255,255,0.05);
-        color: #ffffff;
+        background: rgba(128, 128, 128, 0.1);
+        color: var(--text-color);
+        opacity: 1.0;
     }
     
     /* Style for selected state */
@@ -413,12 +415,12 @@ if 'chat_history' not in st.session_state:
 st.sidebar.markdown("""
 <div style="display: flex; align-items: center; margin-bottom: 30px; margin-top: -30px;">
     <div style="width: 24px; height: 24px; background: linear-gradient(135deg, #ff007a, #7432ff); border-radius: 50%; margin-right: 12px; box-shadow: 2px 2px 10px rgba(116, 50, 255, 0.5);"></div>
-    <h3 style="margin:0; color: white; font-weight: 800; font-size: 1.4rem;">FraudLens</h3>
+    <h3 style="margin:0; color: var(--text-color); font-weight: 800; font-size: 1.4rem;">FraudLens</h3>
 </div>
-<div style="text-align: center; margin-bottom: 35px; background: rgba(255,255,255,0.03); padding: 20px; border-radius: 16px;">
+<div style="text-align: center; margin-bottom: 35px; background: rgba(128,128,128,0.05); padding: 20px; border-radius: 16px;">
     <img src="https://i.pravatar.cc/150?img=47" style="width: 70px; height: 70px; border-radius: 50%; margin-bottom: 12px; border: 3px solid #7432ff; object-fit: cover;">
-    <h3 style="margin: 0; color: white; font-size: 1.1rem; font-weight: 700;">Saira Karim</h3>
-    <p style="margin: 0; color: #8E9AA8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Risk Analyst</p>
+    <h3 style="margin: 0; color: var(--text-color); font-size: 1.1rem; font-weight: 700;">Saira Karim</h3>
+    <p style="margin: 0; color: var(--text-color); opacity: 0.7; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Risk Analyst</p>
 </div>
 """, unsafe_allow_html=True)
 
