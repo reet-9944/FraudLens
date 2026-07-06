@@ -6,7 +6,8 @@ from google.oauth2 import service_account
 
 class GCPPipeline:
     def __init__(self, project_id=None, credentials_path=None):
-        self.project_id = project_id
+        # Use provided project_id or fallback to environment variable FRAUDLENS_PROJECT_ID
+        self.project_id = project_id or os.getenv("FRAUDLENS_PROJECT_ID")
         self.credentials = None
         if credentials_path and os.path.exists(credentials_path):
             self.credentials = service_account.Credentials.from_service_account_file(credentials_path)

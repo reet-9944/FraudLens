@@ -4,7 +4,40 @@ import os
 import argparse
 from datetime import datetime, timedelta
 
-def generate_data(num_records=1_000_000, output_path='../data/transactions.csv'):
+def resolve_path(rel_path):
+    """Resolve relative path dynamically by searching candidate folders."""
+    filename = os.path.basename(rel_path)
+    parent_dir = os.path.basename(os.path.dirname(rel_path))
+    
+    candidates = [
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", parent_dir)),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "../..", parent_dir)),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "fraudlens", parent_dir)),
+        os.path.abspath(os.path.join(".", parent_dir)),
+        os.path.abspath(os.path.join("..", parent_dir)),
+    ]
+    
+    for c in candidates:
+        full_path = os.path.join(c, filename)
+        if os.path.exists(full_path):
+            return full_path
+            
+    # Fallback to creating/using the first candidate
+    for c in candidates:
+        try:
+            os.makedirs(c, exist_ok=True)
+            return os.path.join(c, filename)
+        except Exception:
+            continue
+            
+    return os.path.abspath(rel_path)
+
+def generate_data(num_records=1_000_000, output_path=None):
+    if output_path is None:
+        output_path = resolve_path('../data/transactions.csv')
+    else:
+        output_path = resolve_path(output_path)
+        
     print(f"Generating {num_records} synthetic transactions...")
     np.random.seed(42)
 
@@ -69,7 +102,7 @@ def generate_data(num_records=1_000_000, output_path='../data/transactions.csv')
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate synthetic transaction data")
     parser.add_argument("--rows", type=int, default=100_000, help="Number of rows to generate")
-    parser.add_argument("--output", type=str, default="../data/transactions.csv", help="Output CSV path")
+    parser.add_argument("--output", type=str, default=None, help="Output CSV path")
     args = parser.parse_args()
     
     generate_data(args.rows, args.output)

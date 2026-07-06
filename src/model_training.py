@@ -8,6 +8,34 @@ import pickle
 import os
 import json
 
+def resolve_path(rel_path):
+    """Resolve relative path dynamically by searching candidate folders."""
+    filename = os.path.basename(rel_path)
+    parent_dir = os.path.basename(os.path.dirname(rel_path))
+    
+    candidates = [
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", parent_dir)),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "../..", parent_dir)),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "fraudlens", parent_dir)),
+        os.path.abspath(os.path.join(".", parent_dir)),
+        os.path.abspath(os.path.join("..", parent_dir)),
+    ]
+    
+    for c in candidates:
+        full_path = os.path.join(c, filename)
+        if os.path.exists(full_path):
+            return full_path
+            
+    # Fallback to creating/using the first candidate
+    for c in candidates:
+        try:
+            os.makedirs(c, exist_ok=True)
+            return os.path.join(c, filename)
+        except Exception:
+            continue
+            
+    return os.path.abspath(rel_path)
+
 def prepare_data(df):
     """Basic feature engineering using pandas (simulating the pipeline)."""
     df['timestamp'] = pd.to_datetime(df['timestamp'])
@@ -39,8 +67,18 @@ def prepare_data(df):
     
     return X, y
 
-def train_model(data_path="../data/transactions.csv", model_path="../data/xgboost_fraud_model.pkl"):
-    print("Loading data...")
+def train_model(data_path=None, model_path=None):
+    if data_path is None:
+        data_path = resolve_path("../data/transactions.csv")
+    else:
+        data_path = resolve_path(data_path)
+        
+    if model_path is None:
+        model_path = resolve_path("../data/xgboost_fraud_model.pkl")
+    else:
+        model_path = resolve_path(model_path)
+
+    print(f"Loading data from {data_path}...")
     if not os.path.exists(data_path):
         from data_generator import generate_data
         generate_data(num_records=100_000, output_path=data_path)
@@ -49,6 +87,14 @@ def train_model(data_path="../data/transactions.csv", model_path="../data/xgboos
     print(f"Data loaded: {len(df)} rows.")
     
     X, y = prepare_data(df)
+    
+    # Ensure all categorical columns are present or set defaults
+    for col in ['tx_type_TRANSFER', 'tx_type_CASH_OUT', 'tx_type_DEBIT', 'tx_type_CASH_IN']:
+        if col not in X.columns:
+            X[col] = 0
+            
+    # Keep column order consistent
+    X = X.reindex(sorted(X.columns), axis=1)
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
     
@@ -107,8 +153,10 @@ def train_model(data_path="../data/transactions.csv", model_path="../data/xgboos
     print(f"Model saved to {model_path}")
     
     # Save features for frontend
-    with open("../data/model_features.json", "w") as f:
+    features_path = resolve_path("../data/model_features.json")
+    with open(features_path, "w") as f:
         json.dump(list(X.columns), f)
+    print(f"Model features saved to {features_path}")
         
     return {
         'auc': round(auc, 4),
