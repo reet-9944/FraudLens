@@ -460,54 +460,51 @@ if page == "🏠 Home / Overview":
 .hero-images {{
     flex: 1;
     position: relative;
-    height: 560px;
-    max-width: 500px;
+    height: 500px;
+    max-width: 550px;
     margin-left: auto;
 }}
-/* Replicate the grid layout from Image 2 */
-.img-top-left {{
+.img-wrapper-1 {{
     position: absolute;
-    width: 240px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 30px;
-    top: 0;
-    left: 0;
+    top: 20px;
+    right: 180px;
     animation: slideInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
     opacity: 0;
+    z-index: 2;
 }}
-.img-bottom-left {{
+.img-wrapper-2 {{
     position: absolute;
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 30px;
-    bottom: 0;
-    left: 0;
-    animation: slideInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
-    opacity: 0;
-}}
-.img-top-right {{
-    position: absolute;
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 30px;
-    top: 0;
-    right: 0;
+    bottom: 20px;
+    right: 20px;
     animation: slideInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards;
     opacity: 0;
+    z-index: 3;
 }}
-.img-bottom-right {{
-    position: absolute;
-    width: 240px;
-    height: 300px;
+@keyframes floatImg1 {{
+    0% {{ transform: translateY(0px); }}
+    50% {{ transform: translateY(-15px); }}
+    100% {{ transform: translateY(0px); }}
+}}
+@keyframes floatImg2 {{
+    0% {{ transform: translateY(0px); }}
+    50% {{ transform: translateY(15px); }}
+    100% {{ transform: translateY(0px); }}
+}}
+.img-floating-1 {{
+    width: 320px;
+    height: 380px;
     object-fit: cover;
     border-radius: 30px;
-    bottom: 0;
-    right: 0;
-    animation: slideInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
-    opacity: 0;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    animation: floatImg1 6s ease-in-out infinite;
+}}
+.img-floating-2 {{
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    animation: floatImg2 7s ease-in-out infinite;
 }}
 
 /* Decorative circles with Morphing Blob Animation */
@@ -826,10 +823,8 @@ if page == "🏠 Home / Overview":
         </div>
         
         <div class="hero-images">
-            <img src="data:image/png;base64,{img_h1}" class="img-top-left" onerror="this.style.display='none'">
-            <img src="data:image/png;base64,{img_h2}" class="img-bottom-left" onerror="this.style.display='none'">
-            <img src="data:image/png;base64,{img_h3}" class="img-top-right" onerror="this.style.display='none'">
-            <img src="data:image/png;base64,{img_h4}" class="img-bottom-right" onerror="this.style.display='none'">
+            <div class="img-wrapper-1"><img src="data:image/png;base64,{img_h2}" class="img-floating-1" onerror="this.style.display='none'"></div>
+            <div class="img-wrapper-2"><img src="data:image/png;base64,{img_h4}" class="img-floating-2" onerror="this.style.display='none'"></div>
         </div>
     </div>
     
