@@ -965,6 +965,7 @@ if page == "Home / Overview":
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     margin-bottom: 1.5rem;
+    background: white;
     transition: transform 0.5s ease;
 }}
 .browse-card:hover .browse-img {{
@@ -1039,9 +1040,6 @@ if page == "Home / Overview":
         padding: 5rem 5%;
     }}
     
-    .browse-grid {{
-        grid-template-columns: 1fr;
-    }}
     
     .newsletter-card {{
         padding: 3rem 5%;
@@ -1109,7 +1107,6 @@ if page == "Home / Overview":
         padding: 4rem 5% !important;
     }}
     
-    .browse-grid {{ grid-template-columns: 1fr; gap: 1.5rem; }}
     
     .newsletter-card {{ padding: 3rem 5%; text-align: center; }}
     .newsletter-title {{ font-size: 1.8rem; }}
