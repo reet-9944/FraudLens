@@ -1074,10 +1074,10 @@ if page == "Home / Overview":
 }}
 
 @media (max-width: 900px) {{
-
-    /* --- FORCED MOBILE HERO ADJUSTMENTS --- */
     .hero-section {{
+        flex-direction: column !important;
         padding: 4rem 5% 2rem 5% !important;
+        text-align: center;
         min-height: auto !important;
     }}
     .hero-title {{ font-size: 2.8rem !important; line-height: 1.1 !important; margin-bottom: 1rem !important; }}
@@ -1115,10 +1115,32 @@ if page == "Home / Overview":
     .img-floating-1, .img-floating-2 {{
         width: 250px !important;
         height: 250px !important;
-        animation: none !important; /* Stop floating animation on mobile to prevent overflow */
+        animation: none !important;
     }}
-    .powered-logos {{ margin-bottom: 3rem !important; }}
-
+    .powered-logos {{ margin-bottom: 3rem !important; justify-content: center !important; flex-wrap: wrap !important; }}
+    
+    .features-section, .browse-section, .how-it-works-section, .newsletter-section {{
+        padding: 4rem 5% !important;
+    }}
+    
+    .hiw-step {{
+        flex-direction: column !important;
+        gap: 2rem;
+        text-align: center;
+    }}
+    .hiw-badge {{ margin: 0 auto 1rem auto; }}
+    .hiw-img {{ width: 100%; }}
+    
+    .browse-grid {{ grid-template-columns: 1fr; gap: 1.5rem; }}
+    
+    .newsletter-card {{ padding: 3rem 5%; text-align: center; }}
+    .newsletter-title {{ font-size: 1.8rem; }}
+    .newsletter-input-group {{ flex-direction: column; margin: 0 auto; }}
+    
+    .main-footer {{ padding: 3rem 5% !important; flex-direction: column !important; display: flex !important; width: 100% !important; box-sizing: border-box !important; }}
+    .footer-top-row {{ flex-direction: row !important; gap: 1rem !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; justify-content: flex-start !important; flex-wrap: wrap !important;}}
+    .footer-grid {{ flex-direction: row !important; gap: 1rem !important; text-align: left !important; width: 100% !important; box-sizing: border-box !important; }}
+    .footer-col {{ flex: 1 !important; min-width: 0 !important; overflow-wrap: break-word !important; word-wrap: break-word !important; }}
 }}
 </style>
 <div class="landing-wrapper">
