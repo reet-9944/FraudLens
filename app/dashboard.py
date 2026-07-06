@@ -694,9 +694,46 @@ if page == "🏠 Home / Overview":
 
 /* How it works section */
 .how-it-works-section {{
-    background-color: #4b367c;
+    background-color: #2b1154;
     padding: 8rem 10%;
     color: white;
+    position: relative;
+    overflow: hidden;
+}}
+.hiw-header, .hiw-step {{
+    position: relative;
+    z-index: 1;
+}}
+.glow-blob {{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.6;
+    z-index: 0;
+}}
+.blob-1 {{
+    width: 400px;
+    height: 400px;
+    background: #ff007a;
+    top: 5%;
+    left: -100px;
+    animation: floatObj 15s infinite alternate, morphBlob 10s infinite alternate;
+}}
+.blob-2 {{
+    width: 500px;
+    height: 500px;
+    background: #00d2ff;
+    top: 40%;
+    right: -150px;
+    animation: floatObj 12s infinite alternate-reverse, morphBlob 12s infinite alternate-reverse;
+}}
+.blob-3 {{
+    width: 350px;
+    height: 350px;
+    background: #7432ff;
+    bottom: 5%;
+    left: 20%;
+    animation: floatObj 14s infinite alternate, morphBlob 8s infinite alternate;
 }}
 .hiw-header {{
     margin-bottom: 4rem;
@@ -899,6 +936,10 @@ if page == "🏠 Home / Overview":
     </div>
     
     <div class="how-it-works-section">
+        <div class="glow-blob blob-1"></div>
+        <div class="glow-blob blob-2"></div>
+        <div class="glow-blob blob-3"></div>
+        
         <div class="hiw-header">
             <h2 class="hiw-title">How it works</h2>
             <div class="hiw-line"></div>
