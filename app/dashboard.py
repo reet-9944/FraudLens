@@ -709,10 +709,7 @@ if page == "Home / Overview":
     position: relative;
     overflow: hidden;
 }}
-.hiw-header, .hiw-step {{
-    position: relative;
-    z-index: 1;
-}}
+.hiw-header,
 .glow-blob {{
     position: absolute;
     border-radius: 50%;
@@ -757,12 +754,6 @@ if page == "Home / Overview":
     height: 4px;
     background-color: #ffc933;
     border-radius: 2px;
-}}
-.hiw-step {{
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-    margin-bottom: 5rem;
 }}
 .hiw-step.reverse {{
     flex-direction: row-reverse;
@@ -1045,14 +1036,6 @@ if page == "Home / Overview":
         padding: 5rem 5%;
     }}
     
-    .hiw-step {{
-        flex-direction: column !important;
-        gap: 2rem;
-        text-align: center;
-    }}
-    .hiw-badge {{ margin: 0 auto 1rem auto; }}
-    .hiw-img {{ width: 100%; }}
-    
     .browse-grid {{
         grid-template-columns: 1fr;
     }}
@@ -1122,14 +1105,6 @@ if page == "Home / Overview":
     .features-section, .browse-section, .how-it-works-section, .newsletter-section {{
         padding: 4rem 5% !important;
     }}
-    
-    .hiw-step {{
-        flex-direction: column !important;
-        gap: 2rem;
-        text-align: center;
-    }}
-    .hiw-badge {{ margin: 0 auto 1rem auto; }}
-    .hiw-img {{ width: 100%; }}
     
     .browse-grid {{ grid-template-columns: 1fr; gap: 1.5rem; }}
     
