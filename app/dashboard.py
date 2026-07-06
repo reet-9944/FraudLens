@@ -1154,6 +1154,7 @@ if page == "Home / Overview":
     font-size: 0.9rem;
 }}
 
+@media (max-width: 1100px) {{
     .hero-title {{ font-size: 3rem; }}
     .hero-subtitle {{ margin: 0 auto 2rem auto; }}
     .hero-buttons {{ justify-content: center; flex-wrap: wrap; }}
@@ -1174,6 +1175,10 @@ if page == "Home / Overview":
     
     .features-section, .browse-section, .how-it-works-section, .newsletter-section {{
         padding: 5rem 5%;
+    }}
+    
+    .browse-grid {{
+        grid-template-columns: 1fr;
     }}
     
     .browse-grid {{
@@ -1250,6 +1255,8 @@ if page == "Home / Overview":
     .features-section, .browse-section, .how-it-works-section, .newsletter-section {{
         padding: 4rem 5% !important;
     }}
+    
+    .browse-grid {{ grid-template-columns: 1fr; gap: 1.5rem; }}
     
     .browse-grid {{ grid-template-columns: 1fr; gap: 1.5rem; }}
     
@@ -1403,25 +1410,19 @@ if page == "Home / Overview":
         <div class="browse-grid">
             <label for="modal-toggle-1" class="browse-card">
                 <div class="browse-img-wrapper">
-                    <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
-                </div>
                 </div>
                 <div class="browse-label">Cloud Triage</div>
             </label>
             <label for="modal-toggle-2" class="browse-card">
                 <div class="browse-img-wrapper">
-                    <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
-                </div>
                 </div>
                 <div class="browse-label">Risk Simulator</div>
             </label>
             <label for="modal-toggle-3" class="browse-card">
                 <div class="browse-img-wrapper">
-                    <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
-                </div>
                 </div>
                 <div class="browse-label">GPU Benchmark</div>
             </label>
@@ -1429,25 +1430,19 @@ if page == "Home / Overview":
             <!-- Hidden Extra Cards -->
             <label for="modal-toggle-4" class="browse-card extra-card">
                 <div class="browse-img-wrapper">
-                    <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_h1}" class="browse-img" onerror="this.style.display='none'">
-                </div>
                 </div>
                 <div class="browse-label">Threat Intelligence</div>
             </label>
             <label for="modal-toggle-5" class="browse-card extra-card">
                 <div class="browse-img-wrapper">
-                    <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_h2}" class="browse-img" onerror="this.style.display='none'">
-                </div>
                 </div>
                 <div class="browse-label">Data Ingestion</div>
             </label>
             <label for="modal-toggle-6" class="browse-card extra-card">
                 <div class="browse-img-wrapper">
-                    <div class="browse-img-wrapper">
                     <img src="data:image/png;base64,{img_h3}" class="browse-img" onerror="this.style.display='none'">
-                </div>
                 </div>
                 <div class="browse-label">Fraud Network</div>
             </label>
