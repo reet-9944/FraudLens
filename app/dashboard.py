@@ -1323,30 +1323,33 @@ if page == "Home / Overview":
         </div>
     </div>
     
-    <div class="main-footer">
-        <div class="footer-col" style="max-width: 300px;">
-            <h3 style="font-weight: 800; font-size: 1.5rem; margin-bottom: 1rem;">FraudLens</h3>
-            <p>Accelerated Risk Intelligence powered by NVIDIA and GCP. We stop fraud before it happens.</p>
+    <div class="main-footer" style="background:#1c1726; color:#a3a7b8; padding: 4rem 10%; font-family:'Outfit', sans-serif;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;" class="footer-top-row">
+            <h4 style="color:white; margin:0; letter-spacing:1px; font-weight:700;">FOLLOW US</h4>
+            <div style="display:flex; gap:15px;">
+                <div style="width:35px; height:35px; border-radius:50%; background:#4267B2; display:flex; justify-content:center; align-items:center; color:white; font-weight:bold; cursor:pointer;">f</div>
+                <div style="width:35px; height:35px; border-radius:50%; background:linear-gradient(45deg, #f09433, #dc2743, #bc1888); display:flex; justify-content:center; align-items:center; color:white; font-weight:bold; cursor:pointer;">in</div>
+                <div style="width:35px; height:35px; border-radius:50%; background:#FF0000; display:flex; justify-content:center; align-items:center; color:white; font-weight:bold; cursor:pointer;">&#9654;</div>
+            </div>
         </div>
-        <div style="display: flex; gap: 4rem;">
-            <div class="footer-col">
-                <h4>Sitemap</h4>
-                <p>Home</p>
-                <p>Live Triage</p>
-                <p>Simulator</p>
-                <p>Copilot</p>
+        
+        <div style="display:flex; justify-content:space-between; gap: 2rem;" class="footer-grid">
+            <div class="footer-col" style="flex: 1;">
+                <h4 style="color:white; margin-bottom:1.5rem; letter-spacing:1px; font-weight:700;">CONTACT US</h4>
+                <p style="margin-bottom:0.3rem;"><strong style="color:white; font-weight:600;">Address:</strong></p>
+                <p style="margin-top:0; margin-bottom:1rem; line-height:1.5; font-size:0.9rem;">28 Cambridge Avenue<br>FraudLens HQ,<br>San Francisco 94126</p>
+                <p style="margin-bottom:0.3rem;"><strong style="color:white; font-weight:600;">Contact:</strong></p>
+                <p style="margin-top:0; margin-bottom:1rem; font-size:0.9rem;">(700) 555-0199</p>
+                <p style="margin-bottom:0.3rem;"><strong style="color:white; font-weight:600;">E-mail:</strong></p>
+                <p style="margin-top:0; font-size:0.9rem;">support@fraudlens.io</p>
             </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <p>About Us</p>
-                <p>Core Team</p>
-                <p>Studio</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>support@fraudlens.io</p>
-                <p>28 Cambridge Avenue<br>San Francisco 94126</p>
-                <p>(700) 555-0199</p>
+            <div class="footer-col" style="flex: 1;">
+                <h4 style="color:white; margin-bottom:1.5rem; letter-spacing:1px; font-weight:700;">NAVIGATE</h4>
+                <p style="margin-bottom:1rem; cursor:pointer; transition:color 0.2s; font-size:0.9rem;">Home</p>
+                <p style="margin-bottom:1rem; cursor:pointer; transition:color 0.2s; font-size:0.9rem;">About</p>
+                <p style="margin-bottom:1rem; cursor:pointer; transition:color 0.2s; font-size:0.9rem;">Products</p>
+                <p style="margin-bottom:1rem; cursor:pointer; transition:color 0.2s; font-size:0.9rem;">Locations</p>
+                <p style="margin-bottom:1rem; cursor:pointer; transition:color 0.2s; font-size:0.9rem;">Contact</p>
             </div>
         </div>
     </div>
