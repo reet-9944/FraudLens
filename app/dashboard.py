@@ -1323,8 +1323,8 @@ if page == "Home / Overview":
         </div>
     </div>
     
-    <div class="main-footer" style="background:#1c1726; color:#a3a7b8; padding: 4rem 10%; font-family:'Outfit', sans-serif;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;" class="footer-top-row">
+    <div class="main-footer" style="display: flex; flex-direction: column; background:#1c1726; color:#a3a7b8; padding: 4rem 10%; font-family:'Outfit', sans-serif;">
+        <div style="display:flex; justify-content:flex-start; align-items:center; gap: 2rem; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;" class="footer-top-row">
             <h4 style="color:white; margin:0; letter-spacing:1px; font-weight:700;">FOLLOW US</h4>
             <div style="display:flex; gap:15px;">
                 <div style="width:35px; height:35px; border-radius:50%; background:#4267B2; display:flex; justify-content:center; align-items:center; color:white; font-weight:bold; cursor:pointer;">f</div>
