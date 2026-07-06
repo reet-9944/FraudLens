@@ -983,6 +983,7 @@ if page == "🏠 Home / Overview":
     cursor: pointer;
     font-size: 1rem;
     margin-top: 2rem;
+    margin-bottom: 5rem; /* Added spacing between button and newsletter card */
     transition: transform 0.3s;
 }}
 .browse-btn:hover {{
