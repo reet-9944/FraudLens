@@ -188,10 +188,10 @@ st.markdown("""
 
     /* Premium Sidebar Styling - Glassmorphism */
     [data-testid="stSidebar"] {
-        background: var(--secondary-background-color) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        border-right: 1px solid rgba(128, 128, 128, 0.2) !important;
+        background: color-mix(in srgb, var(--secondary-background-color) 40%, rgba(255, 253, 248, 0.7)) !important;
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+        border-right: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent) !important;
     }
     
 
