@@ -642,7 +642,7 @@ if page == "🏠 Home / Overview":
 
 /* Newsletter Footer Section */
 .newsletter-section {{
-    background: #ffffff;
+    background: #f8f9fa; /* Matches browse-section background */
     padding: 2rem 10% 6rem 10%;
 }}
 .newsletter-card {{
