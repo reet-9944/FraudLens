@@ -100,11 +100,7 @@ st.markdown("""
             background: #ffffff !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
         }
-        .browse-img-wrapper {
-            background: #ffffff !important;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
-        }
-        
+
         /* Sidebar */
         [data-testid="stSidebar"] {
             background: rgba(248, 249, 250, 0.8) !important;
@@ -1180,6 +1176,10 @@ if page == "Home / Overview":
         padding: 5rem 5%;
     }}
     
+    .browse-grid {{
+        grid-template-columns: 1fr;
+    }}
+    
     
     .browse-grid {{
         grid-template-columns: 1fr;
@@ -1250,6 +1250,8 @@ if page == "Home / Overview":
     .features-section, .browse-section, .how-it-works-section, .newsletter-section {{
         padding: 4rem 5% !important;
     }}
+    
+    .browse-grid {{ grid-template-columns: 1fr; gap: 1.5rem; }}
     
     
     .browse-grid {{
