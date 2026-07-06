@@ -618,16 +618,16 @@ if page == "🏠 Home / Overview":
     box-shadow: 0 25px 50px rgba(0,0,0,0.1);
 }}
 .feature-icon {{
-    width: 80px;
-    height: 80px;
-    background: #f0f3f8;
-    border-radius: 20px;
+    width: 120px;
+    height: 120px;
+    background: transparent;
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem auto;
-    font-size: 2rem;
-    color: #4b1d8c;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
 }}
 .feature-title {{
     font-weight: 700;
@@ -881,17 +881,17 @@ if page == "🏠 Home / Overview":
         <h2 class="section-title">How can we help your Business?</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon"><img src="data:image/png;base64,{icon_nvidia}" style="width: 45px; height: 45px; object-fit: contain;"></div>
+                <div class="feature-icon"><img src="data:image/png;base64,{icon_nvidia}" style="width: 100%; height: 100%; object-fit: cover;"></div>
                 <h3 class="feature-title">NVIDIA RAPIDS</h3>
                 <p class="feature-desc">Utilizing cudf.pandas to parallelize standard data workloads across CUDA cores without rewriting code.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><img src="data:image/png;base64,{icon_gemini}" style="width: 45px; height: 45px; object-fit: contain;"></div>
+                <div class="feature-icon"><img src="data:image/png;base64,{icon_gemini}" style="width: 100%; height: 100%; object-fit: cover;"></div>
                 <h3 class="feature-title">Gemini Copilot</h3>
                 <p class="feature-desc">Built-in Gemini Enterprise Copilot for natural language interaction and automated auditing.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><img src="data:image/png;base64,{icon_gcp}" style="width: 45px; height: 45px; object-fit: contain;"></div>
+                <div class="feature-icon"><img src="data:image/png;base64,{icon_gcp}" style="width: 100%; height: 100%; object-fit: cover;"></div>
                 <h3 class="feature-title">Google Cloud</h3>
                 <p class="feature-desc">Natively integrates with Google Cloud Platform (BigQuery, GKE, Dataproc) for robust scale.</p>
             </div>
