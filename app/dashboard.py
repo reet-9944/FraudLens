@@ -1023,13 +1023,6 @@ if page == "Home / Overview":
     font-size: 0.9rem;
 }}
 
-/* --- RESPONSIVE MOBILE ADJUSTMENTS --- */
-@media (max-width: 900px) {{{
-    .hero-section {{
-        flex-direction: column;
-        padding: 6rem 5% 4rem 5%;
-        text-align: center;
-    }}
     .hero-title {{ font-size: 3rem; }}
     .hero-subtitle {{ margin: 0 auto 2rem auto; }}
     .hero-buttons {{ justify-content: center; flex-wrap: wrap; }}
