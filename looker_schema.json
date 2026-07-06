@@ -1,0 +1,84 @@
+{
+  "name": "fraud_analysis",
+  "label": "FraudLens Risk Analysis",
+  "description": "Exploration of transaction data enriched by GPU-accelerated XGBoost models.",
+  "connection": "bigquery_fraudlens_conn",
+  "base_view": "transactions_enriched",
+  "fields": [
+    {
+      "name": "transaction_id",
+      "type": "string",
+      "primary_key": true,
+      "description": "Unique transaction identifier"
+    },
+    {
+      "name": "timestamp",
+      "type": "timestamp",
+      "description": "Time of transaction"
+    },
+    {
+      "name": "user_id",
+      "type": "number",
+      "description": "Originating user ID"
+    },
+    {
+      "name": "merchant_id",
+      "type": "number",
+      "description": "Destination merchant ID"
+    },
+    {
+      "name": "amount",
+      "type": "number",
+      "value_format_name": "usd",
+      "description": "Transaction amount in USD"
+    },
+    {
+      "name": "tx_type",
+      "type": "string",
+      "description": "Type of transaction (e.g., TRANSFER, PAYMENT)"
+    },
+    {
+      "name": "ml_risk_score",
+      "type": "number",
+      "value_format_name": "percent_2",
+      "description": "XGBoost calculated fraud probability"
+    },
+    {
+      "name": "is_fraud_flagged",
+      "type": "yesno",
+      "sql": "${ml_risk_score} >= 0.70",
+      "description": "True if the model flagged this transaction as high risk"
+    }
+  ],
+  "measures": [
+    {
+      "name": "total_transactions",
+      "type": "count",
+      "description": "Total number of transactions"
+    },
+    {
+      "name": "total_volume",
+      "type": "sum",
+      "sql": "${amount}",
+      "value_format_name": "usd",
+      "description": "Total monetary volume"
+    },
+    {
+      "name": "value_at_risk",
+      "type": "sum",
+      "sql": "${amount}",
+      "filters": {
+        "is_fraud_flagged": "Yes"
+      },
+      "value_format_name": "usd",
+      "description": "Total monetary volume of transactions flagged as fraud"
+    },
+    {
+      "name": "fraud_rate",
+      "type": "number",
+      "sql": "1.0 * ${value_at_risk} / NULLIF(${total_volume}, 0)",
+      "value_format_name": "percent_2",
+      "description": "Percentage of total volume flagged as fraud"
+    }
+  ]
+}

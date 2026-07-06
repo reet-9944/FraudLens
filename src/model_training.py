@@ -1,3 +1,10 @@
+try:
+    import cudf.pandas
+    cudf.pandas.install()
+    print("🚀 NVIDIA RAPIDS (cudf.pandas) enabled for ultra-fast ETL.")
+except ImportError:
+    pass
+
 import pandas as pd
 import numpy as np
 import xgboost as xgb
