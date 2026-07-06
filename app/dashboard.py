@@ -8,6 +8,8 @@ import plotly.graph_objects as go
 import time
 import pickle
 import re
+import base64
+import textwrap
 from datetime import datetime
 
 # Set page config
@@ -42,6 +44,14 @@ def resolve_path(rel_path):
             
     return os.path.abspath(rel_path)
 
+def get_base64_of_bin_file(bin_file):
+    try:
+        with open(bin_file, 'rb') as f:
+            data = f.read()
+        return base64.b64encode(data).decode()
+    except Exception:
+        return ""
+
 # Custom premium CSS
 st.markdown("""
 <style>
@@ -52,10 +62,18 @@ st.markdown("""
         font-family: 'Outfit', sans-serif;
     }
     
-    /* App background */
+    /* App background - Animated Gradient */
     .stApp {
-        background-color: #0b0d12;
+        background: linear-gradient(-45deg, #0b0d12, #1a1f2e, #0f1626, #050811);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
         color: #f0f2f6;
+    }
+    
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
     
     /* Neon glow effect for cards */
@@ -67,6 +85,26 @@ st.markdown("""
         margin-bottom: 15px;
         backdrop-filter: blur(10px);
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .glass-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px 0 rgba(0, 230, 118, 0.15);
+    }
+    
+    /* Fade In Up Animation for Hero */
+    .fade-in-up {
+        animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     
     .glass-card-border-green {
@@ -205,6 +243,7 @@ st.sidebar.markdown("<h2 style='text-align: center; color: #FFFFFF;'>🔍 FraudL
 st.sidebar.markdown("<p style='text-align: center; color: #8E9AA8;'>Accelerated Risk Intelligence</p>", unsafe_allow_html=True)
 
 page = st.sidebar.radio("Navigation", [
+    "🏠 Home / Overview",
     "🔴 Live Triage & Alerting", 
     "🚀 Live Accelerator Benchmark", 
     "🔬 Transaction Risk Simulator", 
@@ -229,8 +268,606 @@ st.sidebar.markdown("""
 
 # --- Navigation Pages ---
 
+# PAGE 0: HOME / OVERVIEW
+if page == "🏠 Home / Overview":
+    # Load base64 images - Fix paths relative to where script is executed (from workspace root)
+    img_h1 = get_base64_of_bin_file("app/assets/hero_collage_1.png")
+    img_h2 = get_base64_of_bin_file("app/assets/hero_collage_2.png")
+    img_h3 = get_base64_of_bin_file("app/assets/hero_collage_3.png")
+    img_h4 = get_base64_of_bin_file("app/assets/feature_ai.png")
+    
+    img_f1 = get_base64_of_bin_file("app/assets/feature_speed.png")
+    img_f2 = get_base64_of_bin_file("app/assets/feature_ai.png")
+    img_f3 = get_base64_of_bin_file("app/assets/feature_cloud.png")
+    
+    # We use a massive HTML block to break out of Streamlit's constraints and build a custom layout
+    custom_landing_html = f"""
+<style>
+/* Reset and layout */
+.block-container {{ 
+    padding-top: 0rem !important; 
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important; 
+    padding-right: 0rem !important;
+    max-width: 100% !important; 
+}}
+.landing-wrapper {{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    background: #2a1b4e;
+    color: white;
+}}
+
+/* Hero Section */
+.hero-section {{
+    background: linear-gradient(135deg, #1d3354 0%, #3d1c5a 50%, #201335 100%);
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 10%;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}}
+.hero-content {{
+    flex: 1;
+    max-width: 650px;
+    z-index: 10;
+}}
+.hero-top-text {{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: #b0b4c0;
+    margin-bottom: 1rem;
+}}
+.hero-title {{
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}}
+.hero-subtitle {{
+    font-size: 1.1rem;
+    color: #a3a7b8;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    max-width: 500px;
+}}
+.hero-buttons {{
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}}
+.btn-primary {{
+    background: linear-gradient(90deg, #b843f2, #7432ff);
+    color: white;
+    padding: 14px 35px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+}}
+.btn-outline {{
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 14px 35px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+}}
+.hero-powered {{
+    font-size: 0.8rem;
+    color: #b0b4c0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}}
+.powered-logos {{
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+}}
+
+.hero-images {{
+    flex: 1;
+    position: relative;
+    height: 560px;
+    max-width: 500px;
+    margin-left: auto;
+}}
+/* Replicate the grid layout from Image 2 */
+.img-top-left {{
+    position: absolute;
+    width: 240px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 30px;
+    top: 0;
+    left: 0;
+}}
+.img-bottom-left {{
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 30px;
+    bottom: 0;
+    left: 0;
+}}
+.img-top-right {{
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 30px;
+    top: 0;
+    right: 0;
+}}
+.img-bottom-right {{
+    position: absolute;
+    width: 240px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 30px;
+    bottom: 0;
+    right: 0;
+}}
+
+/* Decorative circles */
+.circle-yellow {{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #ffc933;
+    border-radius: 50%;
+    bottom: 15%;
+    left: 45%;
+}}
+.circle-pink {{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #ff8c82;
+    border-radius: 50%;
+    top: 10%;
+    right: 5%;
+}}
+.circle-blue {{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #5dcbf8;
+    border-radius: 50%;
+    bottom: 10%;
+    right: 20%;
+}}
+
+/* Features Grid */
+.features-section {{
+    padding: 8rem 10%;
+    background: #ffffff;
+    color: #333;
+}}
+.section-title {{
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+}}
+.features-grid {{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}}
+.feature-card {{
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}}
+.feature-icon {{
+    width: 80px;
+    height: 80px;
+    background: #f0f3f8;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-size: 2rem;
+    color: #4b1d8c;
+}}
+.feature-title {{
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}}
+.feature-desc {{
+    color: #777;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}}
+
+/* Newsletter Footer Section */
+.newsletter-section {{
+    background: #ffffff;
+    padding: 2rem 10% 6rem 10%;
+}}
+.newsletter-card {{
+    background: linear-gradient(135deg, #2b1154, #54198c);
+    border-radius: 20px;
+    padding: 5rem 10%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}}
+.newsletter-title {{
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}}
+.newsletter-desc {{
+    color: #c9b4e8;
+    margin-bottom: 3rem;
+}}
+.newsletter-input-group {{
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+}}
+.newsletter-input {{
+    flex: 1;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+}}
+.newsletter-btn {{
+    background: linear-gradient(90deg, #b843f2, #7432ff);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}}
+
+/* How it works section */
+.how-it-works-section {
+    background-color: #4b367c;
+    padding: 8rem 10%;
+    color: white;
+}
+.hiw-header {
+    margin-bottom: 4rem;
+}
+.hiw-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.hiw-line {
+    width: 60px;
+    height: 4px;
+    background-color: #ffc933;
+    border-radius: 2px;
+}
+.hiw-step {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 5rem;
+}
+.hiw-step.reverse {
+    flex-direction: row-reverse;
+}
+.hiw-img-container {
+    flex: 1;
+    display: flex;
+}
+.hiw-img {
+    width: 80%;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.hiw-content {
+    flex: 1;
+}
+.hiw-badge {
+    background-color: #ff4070;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+.hiw-step-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.hiw-step-desc {
+    color: #c9b4e8;
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+/* Browse sections */
+.browse-section {
+    background-color: #f04e76;
+    padding: 8rem 10%;
+    color: white;
+    text-align: center;
+}
+.browse-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+.browse-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.browse-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+.browse-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.browse-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 1.5rem;
+    background: white; 
+}
+.browse-label {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.browse-btn {
+    background-color: #4b367c;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 2rem;
+    transition: transform 0.3s;
+}
+.browse-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Main Footer */
+.main-footer {{
+    background: #ffffff;
+    padding: 4rem 10%;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    border-top: 1px solid #eee;
+}}
+.footer-col h4 {{
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}}
+.footer-col p {{
+    color: #666;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}}
+</style>
+
+<div class="landing-wrapper">
+    <div class="hero-section">
+        <div class="circle-pink"></div>
+        <div class="circle-yellow"></div>
+        <div class="circle-blue"></div>
+        
+        <div class="hero-content">
+            <div class="hero-top-text">ENTERPRISE SECURITY • RISK INTELLIGENCE</div>
+            <h1 class="hero-title">Everyday is<br>Chance to Stop<br>Fraud</h1>
+            <p class="hero-subtitle">Experience the next generation of Accelerated Risk Intelligence. Powered by NVIDIA GPUs and Google Cloud infrastructure to process millions of transactions in real-time.</p>
+            
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary" onclick="window.parent.document.querySelectorAll('.stRadio input')[1].click(); return false;">Start Triage</a>
+                <a href="#" class="btn-outline" onclick="window.parent.document.querySelectorAll('.stRadio input')[3].click(); return false;">Run Simulator</a>
+            </div>
+            
+            <div class="hero-powered">
+                ALSO POWERED BY :
+            </div>
+            <div class="powered-logos">
+                <span>☁️ Google Cloud</span>
+                <span>🟢 NVIDIA</span>
+                <span>✨ Gemini</span>
+            </div>
+        </div>
+        
+        <div class="hero-images">
+            <img src="data:image/png;base64,{img_h1}" class="img-top-left" onerror="this.style.display='none'">
+            <img src="data:image/png;base64,{img_h2}" class="img-bottom-left" onerror="this.style.display='none'">
+            <img src="data:image/png;base64,{img_h3}" class="img-top-right" onerror="this.style.display='none'">
+            <img src="data:image/png;base64,{img_h4}" class="img-bottom-right" onerror="this.style.display='none'">
+        </div>
+    </div>
+    
+    <div class="features-section">
+        <h2 class="section-title">How can we help your Business?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3 class="feature-title">NVIDIA RAPIDS</h3>
+                <p class="feature-desc">Utilizing cudf.pandas to parallelize standard data workloads across CUDA cores without rewriting code.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3 class="feature-title">Gemini Copilot</h3>
+                <p class="feature-desc">Built-in Gemini Enterprise Copilot for natural language interaction and automated auditing.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">☁️</div>
+                <h3 class="feature-title">Google Cloud</h3>
+                <p class="feature-desc">Natively integrates with Google Cloud Platform (BigQuery, GKE, Dataproc) for robust scale.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="how-it-works-section">
+        <div class="hiw-header">
+            <h2 class="hiw-title">How it works</h2>
+            <div class="hiw-line"></div>
+        </div>
+        
+        <!-- Step 1 -->
+        <div class="hiw-step">
+            <div class="hiw-img-container" style="justify-content: flex-start;">
+                <img src="data:image/png;base64,{img_h1}" class="hiw-img" onerror="this.style.display='none'">
+            </div>
+            <div class="hiw-content">
+                <div class="hiw-badge">01</div>
+                <h3 class="hiw-step-title">Ingest & Search</h3>
+                <p class="hiw-step-desc">Connect directly to Google Cloud Storage or BigQuery. Raw transaction data is automatically cleaned and standardized in real-time.</p>
+            </div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="hiw-step">
+            <div class="hiw-img-container" style="justify-content: center;">
+                <img src="data:image/png;base64,{img_h2}" class="hiw-img" onerror="this.style.display='none'">
+            </div>
+            <div class="hiw-content">
+                <div class="hiw-badge">02</div>
+                <h3 class="hiw-step-title">Accelerate & Select</h3>
+                <p class="hiw-step-desc">NVIDIA RAPIDS automatically accelerates standard pandas workloads across CUDA cores, providing a massive speedup instantly.</p>
+            </div>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="hiw-step reverse">
+            <div class="hiw-img-container" style="justify-content: center;">
+                <img src="data:image/png;base64,{img_h3}" class="hiw-img" onerror="this.style.display='none'">
+            </div>
+            <div class="hiw-content" style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
+                <div class="hiw-badge">03</div>
+                <h3 class="hiw-step-title">AI Import</h3>
+                <p class="hiw-step-desc">The XGBoost model scores transactions on the fly while Gemini Copilot provides natural language contextual analysis.</p>
+            </div>
+        </div>
+        
+        <!-- Step 4 -->
+        <div class="hiw-step reverse">
+            <div class="hiw-img-container" style="justify-content: flex-end;">
+                <img src="data:image/png;base64,{img_f2}" class="hiw-img" onerror="this.style.display='none'">
+            </div>
+            <div class="hiw-content" style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
+                <div class="hiw-badge">04</div>
+                <h3 class="hiw-step-title">Launch Triage</h3>
+                <p class="hiw-step-desc">Risk analysts receive instant notifications and can deep-dive into the live Dataproc and GKE dashboard.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="browse-section">
+        <div class="browse-header">
+            <h2 class="browse-title">Browse according to sections</h2>
+            <div class="hiw-line"></div>
+        </div>
+        <div class="browse-grid">
+            <div class="browse-card">
+                <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-label">Cloud Triage</div>
+            </div>
+            <div class="browse-card">
+                <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-label">Risk Simulator</div>
+            </div>
+            <div class="browse-card">
+                <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
+                <div class="browse-label">GPU Benchmark</div>
+            </div>
+        </div>
+        <button class="browse-btn" onclick="window.parent.document.querySelectorAll('.stRadio input')[1].click(); return false;">View All →</button>
+    </div>
+    
+    <div class="newsletter-section">
+        <div class="newsletter-card">
+            <h2 class="newsletter-title">Keep In Touch and Stay Secure Everyday</h2>
+            <p class="newsletter-desc">Subscribe to our threat intelligence feed for the latest vulnerabilities and accelerated analytics news.</p>
+            <div class="newsletter-input-group">
+                <input type="text" class="newsletter-input" placeholder="Enter Your Email">
+                <button class="newsletter-btn">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-footer">
+        <div class="footer-col" style="max-width: 300px;">
+            <h3 style="font-weight: 800; font-size: 1.5rem; margin-bottom: 1rem;">FraudLens</h3>
+            <p>Accelerated Risk Intelligence powered by NVIDIA and GCP. We stop fraud before it happens.</p>
+        </div>
+        <div style="display: flex; gap: 4rem;">
+            <div class="footer-col">
+                <h4>Sitemap</h4>
+                <p>Home</p>
+                <p>Live Triage</p>
+                <p>Simulator</p>
+                <p>Copilot</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <p>About Us</p>
+                <p>Core Team</p>
+                <p>Studio</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>support@fraudlens.io</p>
+                <p>28 Cambridge Avenue<br>San Francisco 94126</p>
+                <p>(700) 555-0199</p>
+            </div>
+        </div>
+    </div>
+</div>
+"""
+    
+    # We use st.markdown instead of components.html to inject this directly into the Streamlit DOM, 
+    # allowing the CSS to break out of the container bounds for a true full-screen layout.
+    # CRITICAL: We must strip ALL leading whitespace, otherwise Streamlit interprets indented HTML as a markdown code block!
+    clean_html = "\n".join([line.strip() for line in custom_landing_html.split('\n')])
+    st.markdown(clean_html, unsafe_allow_html=True)
+
+
 # PAGE 1: LIVE TRIAGE & ALERTING
-if page == "🔴 Live Triage & Alerting":
+elif page == "🔴 Live Triage & Alerting":
     st.title("🔴 Real-Time Triage & Alerts")
     st.markdown("Real-time transactional audit stream powered by GPU-accelerated gradient boosting classifier.")
     
