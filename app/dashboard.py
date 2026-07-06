@@ -345,12 +345,23 @@ if page == "🏠 Home / Overview":
     margin-bottom: 4rem;
 }}
 .btn-primary {{
-    background: linear-gradient(90deg, #b843f2, #7432ff);
+    background: linear-gradient(90deg, #b843f2, #7432ff, #ff007a, #b843f2);
+    background-size: 300%;
     color: white;
     padding: 14px 35px;
     border-radius: 40px;
     text-decoration: none;
     font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: gradientMove 4s linear infinite;
+}}
+.btn-primary:hover {{
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(184, 67, 242, 0.5);
+}}
+@keyframes gradientMove {{
+    0% {{ background-position: 0% 50%; }}
+    100% {{ background-position: 100% 50%; }}
 }}
 .btn-outline {{
     background: transparent;
@@ -421,33 +432,43 @@ if page == "🏠 Home / Overview":
     right: 0;
 }}
 
-/* Decorative circles */
+/* Decorative circles with Morphing Blob Animation */
+@keyframes morphBlob {{
+    0%, 100% {{ border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }}
+    34% {{ border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }}
+    67% {{ border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }}
+}}
+@keyframes floatObj {{
+    0% {{ transform: translateY(0px) rotate(0deg); }}
+    50% {{ transform: translateY(-20px) rotate(10deg); }}
+    100% {{ transform: translateY(0px) rotate(0deg); }}
+}}
 .circle-yellow {{
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background: #ffc933;
-    border-radius: 50%;
     bottom: 15%;
     left: 45%;
+    animation: morphBlob 8s ease-in-out infinite, floatObj 6s ease-in-out infinite alternate;
 }}
 .circle-pink {{
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     background: #ff8c82;
-    border-radius: 50%;
     top: 10%;
     right: 5%;
+    animation: morphBlob 7s ease-in-out infinite, floatObj 5s ease-in-out infinite alternate-reverse;
 }}
 .circle-blue {{
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     background: #5dcbf8;
-    border-radius: 50%;
     bottom: 10%;
     right: 20%;
+    animation: morphBlob 9s ease-in-out infinite, floatObj 7s ease-in-out infinite alternate;
 }}
 
 /* Features Grid */
@@ -470,9 +491,16 @@ if page == "🏠 Home / Overview":
 .feature-card {{
     text-align: center;
     padding: 2rem;
-    border: 1px solid #eee;
+    border: 1px solid rgba(255,255,255,0.4);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}}
+.feature-card:hover, .browse-card:hover {{
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
 }}
 .feature-icon {{
     width: 80px;
@@ -636,6 +664,7 @@ if page == "🏠 Home / Overview":
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }}
 .browse-img {{
     width: 100%;
