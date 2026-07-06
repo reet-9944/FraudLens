@@ -1083,14 +1083,14 @@ if page == "Home / Overview":
 @media (max-width: 900px) {
 
     /* --- FORCED MOBILE HERO ADJUSTMENTS --- */
-    .hero-section {
+    .hero-section {{
         padding: 4rem 5% 2rem 5% !important;
         min-height: auto !important;
-    }
-    .hero-title { font-size: 2.8rem !important; line-height: 1.1 !important; margin-bottom: 1rem !important; }
-    .hero-subtitle { font-size: 1rem !important; margin: 0 auto 2rem auto !important; padding: 0 10px !important; }
+    }}
+    .hero-title {{ font-size: 2.8rem !important; line-height: 1.1 !important; margin-bottom: 1rem !important; }}
+    .hero-subtitle {{ font-size: 1rem !important; margin: 0 auto 2rem auto !important; padding: 0 10px !important; }}
     
-    .hero-buttons {
+    .hero-buttons {{
         flex-direction: column !important;
         gap: 1rem !important;
         margin-bottom: 2rem !important;
@@ -1098,10 +1098,10 @@ if page == "Home / Overview":
         max-width: 300px !important;
         margin-left: auto !important;
         margin-right: auto !important;
-    }
-    .btn-primary, .btn-outline { width: 100% !important; text-align: center !important; padding: 14px 0 !important; box-sizing: border-box !important;}
+    }}
+    .btn-primary, .btn-outline {{ width: 100% !important; text-align: center !important; padding: 14px 0 !important; box-sizing: border-box !important;}}
     
-    .hero-images {
+    .hero-images {{
         height: auto !important;
         width: 100% !important;
         margin-top: 1rem !important;
@@ -1110,23 +1110,23 @@ if page == "Home / Overview":
         align-items: center !important;
         gap: 20px !important;
         position: relative !important;
-    }
-    .img-wrapper-1, .img-wrapper-2 {
+    }}
+    .img-wrapper-1, .img-wrapper-2 {{
         position: relative !important;
         top: 0 !important; right: 0 !important; left: 0 !important; bottom: 0 !important;
         transform: none !important;
         margin: 0 !important;
         display: flex !important;
         justify-content: center !important;
-    }
-    .img-floating-1, .img-floating-2 {
+    }}
+    .img-floating-1, .img-floating-2 {{
         width: 250px !important;
         height: 250px !important;
         animation: none !important; /* Stop floating animation on mobile to prevent overflow */
-    }
-    .powered-logos { margin-bottom: 3rem !important; }
+    }}
+    .powered-logos {{ margin-bottom: 3rem !important; }}
 
-}
+}}
 </style>
 <div class="landing-wrapper">
     <div class="hero-section">
