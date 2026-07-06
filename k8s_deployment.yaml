@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fraudlens
+  labels:
+    app: fraudlens
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fraudlens
+  template:
+    metadata:
+      labels:
+        app: fraudlens
+    spec:
+      containers:
+        - name: fraudlens-container
+          image: gcr.io/<YOUR_PROJECT_ID>/fraudlens:latest
+          ports:
+            - containerPort: 8501
+          resources:
+            limits:
+              nvidia.com/gpu: 1 # request one NVIDIA GPU
+          env:
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: "/workspace/gcp_credentials.json"
+      nodeSelector:
+        cloud.google.com/gke-accelerator: nvidia-l4
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fraudlens-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: fraudlens
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8501

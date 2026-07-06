@@ -1,0 +1,10 @@
+pandas
+numpy
+xgboost
+scikit-learn
+streamlit
+google-cloud-storage
+google-cloud-bigquery
+plotly
+# Note: cudf is typically installed via conda or specialized pip wheels depending on CUDA version
+# E.g., pip install --extra-index-url=https://pypi.nvidia.com cudf-cu12
