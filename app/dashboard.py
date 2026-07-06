@@ -642,8 +642,10 @@ if page == "🏠 Home / Overview":
 
 /* Newsletter Footer Section */
 .newsletter-section {{
-    background: #f8f9fa; /* Matches browse-section background */
-    padding: 2rem 10% 6rem 10%;
+    background: transparent;
+    padding: 0rem 10% 6rem 10%;
+    position: relative;
+    z-index: 1;
 }}
 .newsletter-card {{
     background: #311b5e;
@@ -1232,19 +1234,19 @@ if page == "🏠 Home / Overview":
                 <p class="modal-desc-text">Visualize complex fraud rings and graph networks using Gemini Copilot's natural language exploration.</p>
             </div>
         </div>
-    </div>
-    
-    <div class="newsletter-section">
-        <div class="newsletter-card">
-            <div class="bg-ring ring-1"></div>
-            <div class="bg-ring ring-2"></div>
-            <div class="bg-ring ring-3"></div>
-            <div class="newsletter-content-wrapper">
-                <h2 class="newsletter-title">Keep In Touch and Stay Secure Everyday</h2>
-                <p class="newsletter-desc">Subscribe to our threat intelligence feed for the latest vulnerabilities and accelerated analytics news.</p>
-                <div class="newsletter-input-group">
-                    <input type="text" class="newsletter-input" placeholder="Enter Your Email">
-                    <button class="newsletter-btn">Subscribe</button>
+        
+        <div class="newsletter-section">
+            <div class="newsletter-card">
+                <div class="bg-ring ring-1"></div>
+                <div class="bg-ring ring-2"></div>
+                <div class="bg-ring ring-3"></div>
+                <div class="newsletter-content-wrapper">
+                    <h2 class="newsletter-title">Keep In Touch and Stay Secure Everyday</h2>
+                    <p class="newsletter-desc">Subscribe to our threat intelligence feed for the latest vulnerabilities and accelerated analytics news.</p>
+                    <div class="newsletter-input-group">
+                        <input type="text" class="newsletter-input" placeholder="Enter Your Email">
+                        <button class="newsletter-btn">Subscribe</button>
+                    </div>
                 </div>
             </div>
         </div>
