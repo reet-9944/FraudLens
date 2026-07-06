@@ -762,6 +762,13 @@ if page == "Home / Overview":
     background-color: #ffc933;
     border-radius: 2px;
 }}
+
+.hiw-step {{
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 5rem;
+}}
 .hiw-step.reverse {{
     flex-direction: row-reverse;
 }}
@@ -951,28 +958,17 @@ if page == "Home / Overview":
     line-height: 1.6;
     color: #e0d4f5;
 }}
-.browse-img-wrapper {{
-    width: 100%;
-    height: 300px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    margin-bottom: 1.5rem;
-    background: #080312; /* Deep dark background to blend with tech images */
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}}
 .browse-img {{
     width: 100%;
-    height: 100%;
+    height: 300px;
     object-fit: cover;
-    transform: scale(1.25); /* Zoom in to eliminate baked-in white borders */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 1.5rem;
     transition: transform 0.5s ease;
 }}
 .browse-card:hover .browse-img {{
-    transform: scale(1.35); /* Subtle zoom effect on hover */
+    transform: scale(1.05); /* Subtle zoom effect on hover */
 }}
 .browse-label {{
     font-weight: 700;
@@ -1257,41 +1253,29 @@ if page == "Home / Overview":
         </div>
         <div class="browse-grid">
             <label for="modal-toggle-1" class="browse-card">
-                <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
-                </div>
+                <img src="data:image/png;base64,{img_f1}" class="browse-img" onerror="this.style.display='none'">
                 <div class="browse-label">Cloud Triage</div>
             </label>
             <label for="modal-toggle-2" class="browse-card">
-                <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
-                </div>
+                <img src="data:image/png;base64,{img_h4}" class="browse-img" onerror="this.style.display='none'">
                 <div class="browse-label">Risk Simulator</div>
             </label>
             <label for="modal-toggle-3" class="browse-card">
-                <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
-                </div>
+                <img src="data:image/png;base64,{img_f3}" class="browse-img" onerror="this.style.display='none'">
                 <div class="browse-label">GPU Benchmark</div>
             </label>
             
             <!-- Hidden Extra Cards -->
             <label for="modal-toggle-4" class="browse-card extra-card">
-                <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_h1}" class="browse-img" onerror="this.style.display='none'">
-                </div>
+                <img src="data:image/png;base64,{img_h1}" class="browse-img" onerror="this.style.display='none'">
                 <div class="browse-label">Threat Intelligence</div>
             </label>
             <label for="modal-toggle-5" class="browse-card extra-card">
-                <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_h2}" class="browse-img" onerror="this.style.display='none'">
-                </div>
+                <img src="data:image/png;base64,{img_h2}" class="browse-img" onerror="this.style.display='none'">
                 <div class="browse-label">Data Ingestion</div>
             </label>
             <label for="modal-toggle-6" class="browse-card extra-card">
-                <div class="browse-img-wrapper">
-                    <img src="data:image/png;base64,{img_h3}" class="browse-img" onerror="this.style.display='none'">
-                </div>
+                <img src="data:image/png;base64,{img_h3}" class="browse-img" onerror="this.style.display='none'">
                 <div class="browse-label">Fraud Network</div>
             </label>
         </div>
