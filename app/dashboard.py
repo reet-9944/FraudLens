@@ -610,9 +610,9 @@ if page == "🏠 Home / Overview":
 
 /* Browse sections */
 .browse-section {{
-    background-color: #f04e76;
+    background-color: #e6d5c3;
     padding: 8rem 10%;
-    color: white;
+    color: #2b1154;
     text-align: center;
 }}
 .browse-header {{
